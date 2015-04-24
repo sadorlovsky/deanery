@@ -3,20 +3,3 @@
 <div class="col-md-4">
 <%= render 'form' %>
 </div>
-
-<div class="col-md-4">
-<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "Имя" %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :email, "Электронная почта" %>
-    <%= f.email_field :email, class: "form-control" %>
-  </div>
-  <div class="form-group">
-  <%= f.submit "Сохранить", class: "btn btn-primary" %>
-  <%= link_to 'Назад', users_path, class: "btn btn-default" %>
-  </div>
-<% end %>
-</div>

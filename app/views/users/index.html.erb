@@ -7,8 +7,12 @@
     <%= div_for(user, class: "col-md-2") do %>
       <p><%= user.name %></p>
       <p><%= user.email %></p>
+      <p><%= link_to 'изменить', edit_user_path(user) %></p>
     <% end %>
   <% end %>
 </div>
 
-<%= link_to 'Добавить пользователя', new_user_path, class: "btn btn-default" %>
+<div class="row">
+    <%= link_to 'Добавить пользователя', new_user_path, class: "btn btn-default" %>
+</div>
+

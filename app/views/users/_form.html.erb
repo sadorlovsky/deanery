@@ -20,6 +20,15 @@
     <%= f.text_field :email, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Назад', users_path, class: "btn btn-default" %>
   </div>
 <% end %>
