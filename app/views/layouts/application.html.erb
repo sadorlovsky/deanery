@@ -19,6 +19,15 @@
         <h1 class="page-header">Dashboard</h1>
 
         <div class="row">
+          <% if user_signed_in? %>
+            Здравствуйте, <%= current_user.name %>
+            <p><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></p>
+          <% else %>
+            <%= link_to "Войти", new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+          <% end %>
+        </div>
+
+        <div class="row">
           <%= yield %>
         </div>
 
