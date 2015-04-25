@@ -1,0 +1,38 @@
+<nav class="uk-navbar uk-margin-large-bottom uk-fixed-nav">
+  <a class="uk-navbar-brand uk-hidden-small" href="#">
+    Diploma
+  </a>
+  <div class="uk-navbar-flip">
+    <ul class="uk-navbar-nav uk-hidden-small">
+      <li>
+        <div class="uk-navbar-content">
+          <form action="" class="uk-form uk-margin-remove uk-display-inline-block">
+            <input type="text" placeholder="Поиск...">
+          </form>
+        </div>
+      </li>
+      <li>
+        <a href="#">Главная</a>
+      </li>
+      <li>
+        <a href="#">Настройки</a>
+      </li>
+      <% if user_signed_in? %>
+      <li class="uk-parent" data-uk-dropdown="{mode:'click'}">
+        <a href="#">Аккаунт: <%= current_user.name %></a>
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+            <li><%= link_to "Открыть профиль", current_user %></li>
+            <li><%= link_to "Выйти из системы", destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+      <li>
+        <a href="#">Помощь</a>
+      </li>
+    </ul>
+  </div>
+  <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+  <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+</nav>

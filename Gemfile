@@ -6,7 +6,11 @@ gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
+
+#gem 'bootswatch-rails'
+
+gem 'uikit-sass-rails'
 
 gem 'devise'
 

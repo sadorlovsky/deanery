@@ -7,32 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <%= render "layouts/menu" %>
 
-  <div class="container-fluid">
-    <div class="row">
+  <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
 
-      <%= render "layouts/sidebar" %>
+    <%= render "layouts/navbar" %>
 
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Панель управления</h1>
-
-        <div class="row">
-          <% if user_signed_in? %>
-            Здравствуйте, <%= current_user.name %>
-            <p><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></p>
-          <% else %>
-            <%= link_to "Войти", new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-          <% end %>
-        </div>
-
-        <div class="row">
-          <%= yield %>
-        </div>
-
+    <div class="uk-grid" data-uk-grid-margin>
+      <div class="uk-width-medium-1-4">
+        <%= render "layouts/sidebar" %>
       </div>
-      
+      <div class="uk-width-medium-3-4">
+        <%= yield %>
+      </div>
     </div>
   </div>
 
