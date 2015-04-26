@@ -4,3 +4,6 @@ ru:
       user:
         create: "Сохранить"
         update: "Сохранить"
+      student:
+        create: "Сохранить"
+        update: "Сохранить"

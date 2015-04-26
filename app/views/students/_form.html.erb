@@ -1,4 +1,4 @@
-<%= form_for(@student) do |f| %>
+<%= simple_form_for(@student, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large"}}) do |f| %>
   <% if @student.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -10,20 +10,22 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+    <legend>ФИО</legend>
+    <div class="uk-form-row">
+      <%= f.input_field :last_name, :required => true, placeholder: "Фамилия", :error_html => { :class => 'cant_be_blank'} %>
+    </div>
+    <div class="uk-form-row">
+      <%= f.input_field :first_name, :required => true, placeholder: "Имя", :error_html => { :class => 'cant_be_blank'} %>
+    </div>
+    <div class="uk-form-row">
+      <%= f.input_field :middle_name, :required => true, placeholder: "Отчество", :error_html => { :class => 'cant_be_blank'} %>
+    </div>
+    <div class="uk-form-row">
+      <%= f.button :submit, class: "uk-button" %>
+      <%= link_to 'Назад', students_path %>
+    </div>
+  </fieldset>
 <% end %>

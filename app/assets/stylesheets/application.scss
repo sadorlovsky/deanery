@@ -25,10 +25,29 @@ body {
   padding-top: 50px;
 }
 
+::-webkit-input-placeholder { /* WebKit browsers */
+  color:    #ddd;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #ddd;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #ddd;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    #ddd;
+}
+
 .uk-fixed-nav {
   position: fixed;
   right: 0;
   left: 0;
   top: 0;
   z-index: 1030;
+}
+
+.field_with_errors {
+  display: inline;
 }
