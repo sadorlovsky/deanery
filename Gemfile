@@ -10,6 +10,8 @@ gem 'sass-rails', '~> 5.0'
 
 #gem 'bootswatch-rails'
 
+gem 'simple_form'
+
 gem 'uikit-sass-rails'
 
 gem 'devise'
