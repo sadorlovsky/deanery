@@ -59,6 +59,9 @@ group :development, :test do
   gem 'fabrication'
   gem 'faker'
   gem 'rspec-rails', '~> 3.0.0'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
