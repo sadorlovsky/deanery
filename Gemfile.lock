@@ -60,8 +60,12 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     devise-i18n (0.12.0)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    fabrication (2.13.1)
+    faker (1.4.3)
+      i18n (~> 0.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -124,6 +128,22 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec-core (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.4)
     sass (3.4.13)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -173,12 +193,15 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
+  fabrication
+  faker
   jbuilder (~> 2.0)
   jquery-rails
   pg
   rails (= 4.2.1)
   rails-i18n (~> 4.0.0)
   rails_12factor
+  rspec-rails (~> 3.0.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form
