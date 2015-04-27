@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   devise_for :users
   get 'persons/profile'
 
@@ -10,7 +11,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  authenticated :user do
+    root 'users#index', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root 'static_pages#home', as: :unauthenticated_root
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
