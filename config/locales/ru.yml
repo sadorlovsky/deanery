@@ -1,9 +1,8 @@
 ru:
   helpers:
     submit:
-      user:
-        create: "Сохранить"
-        update: "Сохранить"
-      student:
-        create: "Сохранить"
-        update: "Сохранить"
+      create: "Отправить"
+      update: "Отправить"
+  date:
+    formats:
+      default: "%m.%d.%Y"

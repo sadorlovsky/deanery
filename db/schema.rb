@@ -11,29 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427000107) do
+ActiveRecord::Schema.define(version: 20150503213421) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
     t.string   "branch"
-    t.string   "qualification"
     t.integer  "course"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "qualification"
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "last_name",          null: false
-    t.string   "first_name",         null: false
-    t.string   "middle_name",        null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "last_name",            null: false
+    t.string   "first_name",           null: false
+    t.string   "middle_name",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "group_id"
+    t.date     "birth_date"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.boolean  "class_monitor"
+    t.float    "rating"
+    t.integer  "code"
+    t.integer  "gender"
+    t.string   "passport_ser"
+    t.string   "passport_num"
+    t.string   "passport_issue_where"
+    t.date     "passport_issue_when"
   end
+
+  add_index "students", ["group_id"], name: "index_students_on_group_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
