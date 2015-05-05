@@ -1,13 +1,25 @@
-<%= simple_form_for(@group) do |f| %>
+<%= simple_form_for(@group, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large"}}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :code %>
-    <%= f.input :name %>
-    <%= f.input : %>
+  <div class="uk-form-row">
+    <%= f.input_field :course, placeholder: "Курс" %>
+    <div class="uk-button uk-button-large uk-form-select" data-uk-form-select>
+      <span></span>
+      <i class="uk-icon-caret-down"></i>
+      <%= f.input_field :qualification, collection: @qualifications, prompt: "Квалификация" %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="uk-form-row">
+    <%= f.input_field :code, placeholder: "Код направления" %>
+    <%= f.input_field :branch, placeholder: "Направление" %>
+  </div>
+
+  <div class="uk-form-row">
+    <%= f.input_field :name, placeholder: "Наименование группы" %>
+  </div>
+
+  <div class="uk-form-row">
+    <%= f.button :submit, class: "uk-button uk-button-primary uk-button-large" %>
   </div>
 <% end %>

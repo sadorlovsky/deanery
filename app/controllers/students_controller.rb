@@ -1,15 +1,25 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :get_group, only: [:index, :create, :new]
+  helper_method :genders
 
   # GET /students
   # GET /students.json
   def index
+    @students = @group.students
+  end
+
+  # GET /students/all
+  # GET /students/all.json
+  def all
     @students = Student.all
+    render "students/index"
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    @student = Student.find(params[:id])
   end
 
   # GET /students/new
@@ -25,10 +35,11 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
+    @student.group = @group
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to @student, notice: 'Студент успшешно добавлен.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -42,7 +53,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to @student, notice: 'Студент успешно изменен.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -58,7 +69,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
-      format.js
+      # format.js
     end
   end
 
@@ -68,8 +79,16 @@ class StudentsController < ApplicationController
       @student = Student.find(params[:id])
     end
 
+    def get_group
+      @group = Group.find(params[:group_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:last_name, :first_name, :middle_name)
+      params.require(:student).permit!
+    end
+
+    def genders
+      @genders = [["Мужской", 1], ["Женский", 0]]
     end
 end

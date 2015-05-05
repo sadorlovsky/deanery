@@ -4,20 +4,57 @@
 </div>
 <% end %>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
+<div class="uk-grid">
+    <div class="uk-width-3-10">
+      <%= image_tag @student.photo.url, class: "uk-thumbnail" %>
+    </div>
+    <div class="uk-width-7-10">
+      <h1><%= @student.full_name %></h1>
+      <p style="font-style: italic;">
+        Пол:
+        <% if @student.gender == 1 %>
+        <i class="uk-icon-male"></i>
+        <% else %>
+        <i class="uk-icon-female"></i>
+        <% end %>
+        <%= @student.get_gender %>
+      </p>
+      <p>
+        Группа: <%= "#{@student.group.name} (#{@student.group.course} курс)" %>
+      </p>
+      <p>
+        Направление: <%= "#{@student.group.code} \"#{@student.group.branch}\" (#{@student.group.get_qualification})" %>
+      </p>
+    </div>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
+<div class="uk-grid">
+  <div class="uk-width-1-2">
+    <p>
+      Паспорт: <%= "#{@student.passport_ser} #{@student.passport_num}" %>
+    </p>
+    <p>
+      Выдан: <%= "#{@student.passport_issue_where} #{@student.passport_issue_when}" %>
+    </p>
+  </div>
+  <div class="uk-width-1-2">
+    <p>
+      Дата рождения: <%= @student.birth_date %>
+    </p>
+    <p>
+      Адрес: <%= @student.address %>
+    </p>
+    <p>
+      Телефон: <%= @student.phone %>
+    </p>
+    <p>
+      E-mail: <%= @student.email %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Middle name:</strong>
-  <%= @student.middle_name %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="uk-panel uk-panel-space">
+<%= link_to 'К группе', @student.group %> |
+<%= link_to 'Редактировать', edit_student_path(@student) %> |
+<%= link_to 'Удалить', @student, method: :delete, data: { confirm: 'Вы уверены?' } %>
+</div>

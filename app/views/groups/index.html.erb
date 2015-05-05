@@ -1,31 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
 
-<h1>Listing Groups</h1>
+<h1>Группы</h1>
 
-<table>
+<table class="uk-table uk-table-hover">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th></th>
-      <th colspan="3"></th>
+      <th>Код</th>
+      <th>Направление</th>
+      <th>Наименование</th>
+      <th>Курс</th>
+      <th>Квалификация</th>
     </tr>
   </thead>
-
   <tbody>
     <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.code %></td>
-        <td><%= group.name %></td>
-        <td><%= group. %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td class="uk-width-1-5"><%= group.code %></td>
+      <td class="uk-width-1-5"><%= group.branch %></td>
+      <td class="uk-width-1-5"><%= link_to group.name, group %></td>
+      <td class="uk-width-1-5"><%= group.course %></td>
+      <td class="uk-width-1-5"><%= group.get_qualification %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>

@@ -1,3 +1,5 @@
-<h1>Новый студент</h1>
+<h1>
+  Новый студент <% if @group %>в группу <%= @group.name %><% end %>
+</h1>
 
-<%= render 'form' %>
+<%= render 'form', back: @group %>

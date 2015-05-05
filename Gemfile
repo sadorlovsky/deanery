@@ -10,6 +10,8 @@ gem 'sass-rails', '~> 5.0'
 
 #gem 'bootswatch-rails'
 
+#gem 'simple_enum', '~> 2.0.0'
+
 gem 'paperclip', '~> 4.2'
 gem 'jquery-fileupload-rails'
 

@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  resources :groups
+
   devise_for :users
-  get 'persons/profile'
-
-  # get 'static_pages/home'
-
-  resources :students
   resources :users
+  
+  get 'students', to: 'students#all'
+  get 'students/all', to: 'students#all'
+
+  resources :students, only: [:destroy, :show, :edit, :update]
+  resources :groups do
+    resources :students, only: [:create, :index, :new]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

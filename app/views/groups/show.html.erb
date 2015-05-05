@@ -1,19 +1,42 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
 
-<p>
-  <strong>Code:</strong>
-  <%= @group.code %>
-</p>
+<div class="uk-grid">
+  <div class="uk-width-1-1">
+    <h1><%= @group.name %></h1>
+    <p>Курс: <%= @group.course %></p>
+    <p>Направление: <%= "##{@group.code} '#{@group.branch}'" %></p>
+    <p>Квалификация: <%= @group.get_qualification %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+    <%= link_to 'Редактировать', edit_group_path(@group) %> |
+    <%= link_to 'Удалить', @group, method: :delete, data: { confirm: 'Вы уверены?' } %>
 
-<p>
-  <strong>:</strong>
-  <%= @group. %>
-</p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<% if @group.students.count > 0 %>
+<h2>Студенты группы</h2>
+<table class="uk-table uk-table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>ФИО</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group.students.each_with_index do |student, index| %>
+    <tr>
+      <td class="uk-width-1-5"><%= index + 1 %></td>
+      <td class="uk-width-3-5"><%= link_to student.full_name, student %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<h2>Студентов нет</h2>
+<% end %>
+
+<%= link_to "Новый студент", new_group_student_path(@group) %>
