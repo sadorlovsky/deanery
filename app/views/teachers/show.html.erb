@@ -1,0 +1,21 @@
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
+
+<div class="uk-grid">
+  <div class="uk-width-3-10">
+    <%= image_tag @teacher.photo.url, class: "uk-thumbnail" %>
+    <ul class="uk-list uk-list-line">
+      <li><i class="uk-icon-edit"></i> <%= link_to 'Редактировать', edit_teacher_path(@teacher) %></li>
+      <li><i class="uk-icon-trash-o"></i> <%= link_to 'Удалить', @teacher, method: :delete, data: { confirm: 'Вы уверены?' } %></li>
+    </ul>
+  </div>
+  <div class="uk-width-7-10">
+    <h1><%= @teacher.full_name %></h1>
+    <p>
+      Кафедра: <%= @teacher.cathedra %>
+    </p>
+  </div>
+</div>

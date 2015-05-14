@@ -1,0 +1,26 @@
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
+
+<h1>Преподаватели</h1>
+
+<table class="uk-table uk-table-hover">
+  <thead>
+    <tr>
+      <th>ФИО</th>
+      <th>Кафедра</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher| %>
+    <tr>
+      <td class="uk-width-1-5"><%= link_to teacher.full_name, teacher %></td>
+      <td class="uk-width-1-5"><%= teacher.cathedra %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Новый преподаватель", new_teacher_path, class: "uk-button uk-button-large" %>

@@ -6,14 +6,19 @@
 
 <div class="uk-grid">
   <div class="uk-width-1-1">
-    <h1><%= @group.name %></h1>
-    <p>Курс: <%= @group.course %></p>
-    <p>Направление: <%= "##{@group.code} '#{@group.branch}'" %></p>
-    <p>Квалификация: <%= @group.get_qualification %></p>
+    <div class="uk-panel uk-panel-box">
+      <h1><%= @group.name %></h1>
+      <p>Курс: <%= @group.course %></p>
+      <p>Направление: <%= "##{@group.code} '#{@group.branch}'" %></p>
+      <p>Квалификация: <%= @group.get_qualification %></p>
 
-    <%= link_to 'Редактировать', edit_group_path(@group) %> |
-    <%= link_to 'Удалить', @group, method: :delete, data: { confirm: 'Вы уверены?' } %>
-
+      <%= link_to edit_group_path(@group) do %>
+        <i class="uk-icon-edit"></i> Редактировать
+      <% end %> |
+      <%= link_to @group, method: :delete, data: { confirm: 'Вы уверены?' } do %>
+        <i class="uk-icon-trash-o"></i> Удалить
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -24,6 +29,7 @@
     <tr>
       <th>#</th>
       <th>ФИО</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +37,7 @@
     <tr>
       <td class="uk-width-1-5"><%= index + 1 %></td>
       <td class="uk-width-3-5"><%= link_to student.full_name, student %></td>
+      <td><% if student.class_monitor? %><i class="uk-icon-star uk-icon-hover" data-uk-tooltip title="Староста группы"></i><% end %></td>
     </tr>
     <% end %>
   </tbody>
@@ -39,4 +46,4 @@
 <h2>Студентов нет</h2>
 <% end %>
 
-<%= link_to "Новый студент", new_group_student_path(@group) %>
+<%= link_to "Новый студент", new_group_student_path(@group), class: "uk-button uk-button-large" %>

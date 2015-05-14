@@ -6,3 +6,9 @@ ru:
   date:
     formats:
       default: "%m.%d.%Y"
+  enums:
+    student:
+      gender:
+        male: "мужской"
+        female: "женский"
+

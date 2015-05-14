@@ -1,19 +1,17 @@
 <div class="uk-sticky-placeholder">
   <div class="uk-panel uk-panel-box" data-uk-sticky="{top:65}">
     <ul class="uk-nav uk-nav-side">
-      <li class="uk-nav-header">Студенты</li>
-
       <% if current_page? students_path %>
       <li class="uk-active">
       <% else %>
       <li>
       <% end %>
         <%= link_to students_path do %>
-          <i class="uk-icon-list"></i> Список студентов
+          <i class="uk-icon-list"></i> Студенты
         <% end %>
       </li>
+
       <li class="uk-nav-divider"></li>
-      <li class="uk-nav-header">Группы</li>
       
       <% if current_page? groups_path %>
       <li class="uk-active">
@@ -21,52 +19,48 @@
       <li>
       <% end %>
         <%= link_to groups_path do %>
-          <i class="uk-icon-list"></i> Список групп
+          <i class="uk-icon-list"></i> Группы
         <% end %>
       </li>
 
-      <% if current_page? new_group_path %>
+      <li class="uk-nav-divider"></li>
+
+      <% if current_page? teachers_path %>
       <li class="uk-active">
       <% else %>
       <li>
       <% end %>
-        <%= link_to new_group_path do %>
-          <i class="uk-icon-plus"></i> Новая группа
+        <%= link_to teachers_path do %>
+          <i class="uk-icon-list"></i> Преподаватели
         <% end %>
       </li>
+
       <li class="uk-nav-divider"></li>
-      <li class="uk-nav-header">Преподаватели</li>
+
+      <% if current_page? disciplines_path %>
+      <li class="uk-active">
+      <% else %>
       <li>
-        <%= link_to groups_path do %>
-          <i class="uk-icon-list"></i> Список преподавателей
+      <% end %>
+        <%= link_to disciplines_path do %>
+          <i class="uk-icon-list"></i> Предметы
         <% end %>
       </li>
-      <li>
-        <%= link_to new_group_path do %>
-          <i class="uk-icon-plus"></i> Новый преподаватель
-        <% end %>
-      </li>
+      
       <li class="uk-nav-divider"></li>
-      <li class="uk-nav-header">Предметы</li>
-      <li>
-        <%= link_to groups_path do %>
-          <i class="uk-icon-list"></i> Список предметов
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_group_path do %>
-          <i class="uk-icon-plus"></i> Новый предмет
-        <% end %>
-      </li>
-      <li class="uk-nav-divider"></li>
+
       <li class="uk-nav-header">Успеваемость</li>
+      <% if current_page? timetables_path %>
+      <li class="uk-active">
+      <% else %>
       <li>
-        <%= link_to groups_path do %>
+      <% end %>
+        <%= link_to timetables_path do %>
           <i class="uk-icon-calendar"></i> Расписание
         <% end %>
       </li>
       <li>
-        <%= link_to new_group_path do %>
+        <%= link_to "" do %>
           <i class="uk-icon-star"></i> Оценки
         <% end %>
       </li>

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503213421) do
+ActiveRecord::Schema.define(version: 20150510235954) do
+
+  create_table "disciplines", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "code"
@@ -38,7 +45,6 @@ ActiveRecord::Schema.define(version: 20150503213421) do
     t.string   "phone"
     t.string   "email"
     t.string   "address"
-    t.boolean  "class_monitor"
     t.float    "rating"
     t.integer  "code"
     t.integer  "gender"
@@ -46,9 +52,40 @@ ActiveRecord::Schema.define(version: 20150503213421) do
     t.string   "passport_num"
     t.string   "passport_issue_where"
     t.date     "passport_issue_when"
+    t.boolean  "class_monitor"
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id"
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.date     "birth_date"
+    t.integer  "gender"
+    t.string   "cathedra"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "discipline_id"
+    t.integer  "teacher_id"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.time     "time_start"
+    t.time     "time_end"
+    t.string   "classroom"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "timetables", ["group_id"], name: "index_timetables_on_group_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

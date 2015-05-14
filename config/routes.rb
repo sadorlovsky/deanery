@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :timetables
+  resources :disciplines
+  resources :teachers
+  resources :teachers
   devise_for :users
   resources :users
   

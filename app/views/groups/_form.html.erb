@@ -1,25 +1,80 @@
-<%= simple_form_for(@group, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large"}}) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(@group, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large uk-width-1-1"}}) do |f| %>
 
-  <div class="uk-form-row">
-    <%= f.input_field :course, placeholder: "Курс" %>
-    <div class="uk-button uk-button-large uk-form-select" data-uk-form-select>
-      <span></span>
-      <i class="uk-icon-caret-down"></i>
-      <%= f.input_field :qualification, collection: @qualifications, prompt: "Квалификация" %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="uk-grid" data-uk-grid-margin>
+
+    <div class="uk-width-1-2">
+      <fieldset>
+        <legend>Направление подготовки</legend>
+        <div class="uk-form-row">
+          <div class="uk-grid">
+            <div class="uk-width-1-2" data-uk-tooltip title="Код">
+              <%= f.input_field :code, placeholder: "Код" %>
+            </div>
+            <div class="uk-width-1-2" data-uk-tooltip title="Направление">
+              <%= f.input_field :branch, placeholder: "Направление" %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="uk-width-1-2">
+      <fieldset>
+        <legend>Курс и квалификация</legend>
+        <div class="uk-form-row">
+          <div class="uk-grid">
+
+            <div class="uk-width-1-2" data-uk-tooltip title="Курс">
+              <%= f.input_field :course, placeholder: "Курс" %>
+            </div>
+
+            <div class="uk-width-1-2" data-uk-tooltip title="Квалификация">
+              <div class="uk-button uk-button-large uk-form-select" data-uk-form-select>
+                <span></span>
+                <i class="uk-icon-caret-down"></i>
+                <%= f.input_field :qualification, collection: qualifications, prompt: "Квалификация" %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="uk-width-1-2">
+      <fieldset>
+        <legend>Наименование группы</legend>
+        <div class="uk-form-row" data-uk-tooltip title="Наименование">
+          <%= f.input_field :name, placeholder: "Наименование" %>
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <div class="uk-grid">
+    <div class="uk-form-row">
+
+      <%= link_to :back, class: "uk-button uk-button-large" do %>
+        <i class="uk-icon-chevron-left"></i> Назад
+      <% end %>
+
+      <%= button_tag type: "submit", class: "uk-button uk-button-primary uk-button-large" do %>
+        <i class="uk-icon-save"></i> Сохранить
+      <% end %>
+
     </div>
   </div>
 
-  <div class="uk-form-row">
-    <%= f.input_field :code, placeholder: "Код направления" %>
-    <%= f.input_field :branch, placeholder: "Направление" %>
-  </div>
-
-  <div class="uk-form-row">
-    <%= f.input_field :name, placeholder: "Наименование группы" %>
-  </div>
-
-  <div class="uk-form-row">
-    <%= f.button :submit, class: "uk-button uk-button-primary uk-button-large" %>
-  </div>
 <% end %>

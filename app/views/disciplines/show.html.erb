@@ -1,0 +1,15 @@
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
+
+<div class="uk-grid">
+  <div class="uk-width-1-2">
+    <p><%= @discipline.title %></p>
+    <p><%= @discipline.description %></p>
+    <p>
+      <i class="uk-icon-edit"></i> <%= link_to 'Редактировать', edit_discipline_path(@discipline) %>
+    </p>
+  </div>
+</div>

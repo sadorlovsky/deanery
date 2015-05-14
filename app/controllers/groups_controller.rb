@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :qualifications
 
   # GET /groups
   # GET /groups.json
@@ -29,7 +28,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to @group, notice: 'Группа успешно добавлена.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to @group, notice: 'Группа успешно изменена.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to groups_url, notice: 'Группа успешно удалена.' }
       format.json { head :no_content }
     end
   end
@@ -70,10 +69,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:code, :name, :branch, :qualification, :course)
-    end
-
-    def qualifications
-      @qualifications = [["Магистр", 1], ["Бакалавр", 0]]
+      params.require(:group).permit!
     end
 end

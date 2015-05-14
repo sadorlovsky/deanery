@@ -1,0 +1,48 @@
+<%= simple_form_for(@discipline, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large uk-width-1-1"}}) do |f| %>
+
+  <% if @discipline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discipline.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @discipline.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="uk-grid">
+  
+    <div class="uk-width-1-2">
+      <fieldset>
+        <legend>Наименование</legend>
+        <div class="uk-form-row">
+          <%= f.input_field :title, placeholder: "Название предмета" %>
+        </div>
+      </fieldset>
+    </div>
+    <div class="uk-width-1-2">
+      <fieldset>
+        <legend>Описание</legend>
+        <div class="uk-form-row">
+          <%= f.input_field :description, placeholder: "Описание предмета" %>
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <div class="uk-grid">
+    <div class="uk-form-row">
+      <%= link_to :back, class: "uk-button uk-button-large" do %>
+        <i class="uk-icon-chevron-left"></i> Назад
+      <% end %>
+
+      <%= button_tag type: "submit", class: "uk-button uk-button-primary uk-button-large" do %>
+        <i class="uk-icon-save"></i> Сохранить
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

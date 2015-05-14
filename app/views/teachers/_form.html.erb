@@ -1,0 +1,75 @@
+<%= simple_form_for(@teacher, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large uk-width-1-1"}}) do |f| %>
+  
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @teacher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="uk-grid">
+
+    <div class="uk-width-1-3">
+      <fieldset>
+        <legend>ФИО</legend>
+        <div class="uk-form-row" data-uk-tooltip title="Фамилия">
+          <%= f.input_field :last_name, :required => true, placeholder: "Фамилия", :error_html => { :class => 'cant_be_blank'} %>
+        </div>
+        <div class="uk-form-row" data-uk-tooltip title="Имя">
+          <%= f.input_field :first_name, :required => true, placeholder: "Имя", :error_html => { :class => 'cant_be_blank'} %>
+        </div>
+        <div class="uk-form-row" data-uk-tooltip title="Отчество">
+          <%= f.input_field :middle_name, :required => true, placeholder: "Отчество", :error_html => { :class => 'cant_be_blank'} %>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Дата рождения</legend>
+        <div class="uk-form row" data-uk-tooltip title="Дата рождения">
+          <%= f.input_field :birth_date, as: :string, data: {uk_datepicker: "{weekstart: 0, i18n: { months:#{ru_months}, weekdays:#{ru_weekdays} }, pos:'top', format:'DD.MM.YYYY', minDate:'#{(Date.today - 80.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today - 20.years).strftime("%d.%m.%Y")}'}"}, placeholder: "ДД.ММ.ГГГГ" %>
+        </div>
+      </fieldset>
+    </div>
+    
+    <div class="uk-width-1-3">
+    <fieldset>
+      <legend>Дополнительно</legend>
+      <div class="uk-form-row" data-uk-tooltip title="Пол">
+        <div class="uk-button uk-button-large uk-width-1-2 uk-form-select" data-uk-form-select>
+          <span></span>
+          <i class="uk-icon-caret-down"></i>
+          <%= f.input_field :gender, collection: genders, prompt: "Пол" %>
+        </div>
+      </div>
+      <div class="uk-form-row">
+         <%= f.input_field :cathedra, placeholder: "Кафедра"%>
+      </div>
+      <div class="uk-form-row uk-form-file">
+        <button class="uk-button uk-button-large uk-width-1-1">
+          <i class="uk-icon-image"></i> Загрузить фото
+        </button>
+        <%= f.input_field :photo, as: :file %>
+      </div>
+    </fieldset>
+    </div>
+
+  </div>
+
+  <div class="uk-grid">
+    <div class="uk-form-row">
+
+      <%= link_to :back, class: "uk-button uk-button-large" do %>
+        <i class="uk-icon-chevron-left"></i> Назад
+      <% end %>
+
+      <%= button_tag type: "submit", class: "uk-button uk-button-primary uk-button-large" do %>
+        <i class="uk-icon-save"></i> Сохранить
+      <% end %>
+
+    </div>
+  </div>
+  
+<% end %>

@@ -1,0 +1,27 @@
+<% if notice %>
+<div class="uk-alert uk-alert-success">
+  <%= notice %>
+</div>
+<% end %>
+
+<h1>Предметы</h1>
+
+<table class="uk-table uk-table-hover">
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @disciplines.each do |discipline| %>
+    <tr>
+      <td class="uk-width-1-5"><%= link_to discipline.title, discipline %></td>
+      <td class="uk-width-1-5"><%= discipline.description %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Новый предмет", new_discipline_path, class: "uk-button uk-button-large" %>

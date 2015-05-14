@@ -1,8 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :get_group, only: [:index, :create, :new]
-  helper_method :genders
-
+  
   # GET /students
   # GET /students.json
   def index
@@ -22,7 +21,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
-  # GET /students/new
+  # GET /groups/:id/students/new
   def new
     @student = Student.new
   end
@@ -67,7 +66,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+      format.html { redirect_to students_url, notice: 'Студент успешно удален.' }
       format.json { head :no_content }
       # format.js
     end
@@ -86,9 +85,5 @@ class StudentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit!
-    end
-
-    def genders
-      @genders = [["Мужской", 1], ["Женский", 0]]
     end
 end

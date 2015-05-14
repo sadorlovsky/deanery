@@ -10,8 +10,8 @@
   <thead>
     <tr>
       <th>Код</th>
-      <th>Направление</th>
       <th>Наименование</th>
+      <th>Направление</th>
       <th>Курс</th>
       <th>Квалификация</th>
     </tr>
@@ -20,11 +20,13 @@
     <% @groups.each do |group| %>
     <tr>
       <td class="uk-width-1-5"><%= group.code %></td>
-      <td class="uk-width-1-5"><%= group.branch %></td>
       <td class="uk-width-1-5"><%= link_to group.name, group %></td>
+      <td class="uk-width-1-5"><%= group.branch %></td>
       <td class="uk-width-1-5"><%= group.course %></td>
       <td class="uk-width-1-5"><%= group.get_qualification %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "Новая группа", new_group_path, class: "uk-button uk-button-large" %>
