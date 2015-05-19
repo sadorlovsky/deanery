@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :get_group, only: [:index, :create, :new]
-  before_action :remove_photo, only: :update
+  #before_action :remove_photo, only: :update
   
   # GET /students
   # GET /students.json
@@ -88,10 +88,10 @@ class StudentsController < ApplicationController
       params.require(:student).permit!
     end
 
-    def remove_photo
-      if @student.photo.file?
-        @student.photo = nil
-        @student.save
-      end
-    end
+    #def remove_photo
+    #  if @student.photo.file?
+    #    @student.photo = nil
+    #    @student.save
+    #  end
+    #end
 end

@@ -17,7 +17,9 @@
 //= require fileinput
 //= require fileinput_locale_ru
 //= require bootstrap-switch
+//= require bootstrap-datepicker
 //= require bootstrap-sprockets
+//= require bootstrap3-typeahead
 //= require data-confirm-modal
 //= require validator.js
 //= require_tree .
@@ -40,6 +42,13 @@ $(function () {
 
   $('form').validator({
     delay: 200
+  });
+
+  data = ['fuck', 'suck', 'luck'];
+
+  $('.typeahead').typeahead({
+    name: 'students'
+    source: "/students.json"
   });
 
 });

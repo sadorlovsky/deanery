@@ -9,6 +9,7 @@
     <tr>
       <th>Код</th>
       <th>ФИО</th>
+      <th>Дата рождения</th>
       <th>Группа</th>
       <th></th>
     </tr>
@@ -16,10 +17,11 @@
   <tbody>
     <% @students.each_with_index do |student, index| %>
     <tr>
-      <td class="uk-width-1-5"><%= student.code %></td>
-      <td class="uk-width-3-5"><%= link_to student.full_name, student %></td>
-      <td class="uk-width-1-5"><%= link_to student.group.name, group_students_path(student.group) %></td>
-      <td><% if student.class_monitor? %><i class="uk-icon-star uk-icon-hover" data-uk-tooltip title="Староста группы"></i><% end %></td>
+      <td><%= student.code %></td>
+      <td><%= link_to student.full_name, student %></td>
+      <td><%= link_to student.full_name, student %></td>
+      <td><%= link_to student.group.name, group_students_path(student.group) %></td>
+      <td><% if student.class_monitor? %><%= icon "star" %><% end %></td>
     </tr>
     <% end %>
   </tbody>

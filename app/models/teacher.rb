@@ -19,7 +19,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def full_name
-    @full_name = "#{self.last_name} #{self.first_name} #{self.middle_name}"
+    @full_name = [last_name, first_name, middle_name] * ' '
   end
 
   def get_gender

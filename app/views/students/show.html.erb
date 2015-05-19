@@ -67,10 +67,10 @@
                     Серия и номер: <strong><%= "#{@student.passport_ser} #{@student.passport_num}" %></strong>
                   </li>
                   <li>
-                    Выдан: <strong><%= "#{@student.passport_issue_where} #{@student.passport_issue_when}" %></strong>
+                    Выдан: <strong><%= "#{@student.passport_issue_where} #{Russian.strftime(@student.passport_issue_when, "%d.%m.%Y")}" %></strong>
                   </li>
                   <li>
-                    Дата рождения: <strong><%= @student.birth_date %></strong>
+                    Дата рождения: <strong><%= Russian.strftime(@student.birth_date, "%d.%m.%Y") %></strong>
                   </li>
                 </ul>
               </p>

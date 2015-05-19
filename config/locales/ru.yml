@@ -5,7 +5,7 @@ ru:
       update: "Отправить"
   date:
     formats:
-      default: "%m.%d.%Y"
+      default: "%d.%m.%Y"
   enums:
     student:
       gender:
