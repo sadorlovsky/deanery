@@ -1,12 +1,11 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
 <h1>Группы</h1>
 
-<table class="uk-table uk-table-hover">
+<div class="table-responsive">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Код</th>
@@ -19,14 +18,17 @@
   <tbody>
     <% @groups.each do |group| %>
     <tr>
-      <td class="uk-width-1-5"><%= group.code %></td>
-      <td class="uk-width-1-5"><%= link_to group.name, group %></td>
-      <td class="uk-width-1-5"><%= group.branch %></td>
-      <td class="uk-width-1-5"><%= group.course %></td>
-      <td class="uk-width-1-5"><%= group.get_qualification %></td>
+      <td><%= group.code %></td>
+      <td><%= link_to group.name, group %></td>
+      <td><%= group.branch %></td>
+      <td><%= group.course %></td>
+      <td><%= group.get_qualification %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
-<%= link_to "Новая группа", new_group_path, class: "uk-button uk-button-large" %>
+<%= link_to new_group_path, class: "btn btn-primary" do %>
+  <%= icon "plus" %> Новая группа
+<% end %>

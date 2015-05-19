@@ -1,20 +1,30 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
-<div class="uk-grid">
-  <div class="uk-width-3-10">
-    <%= image_tag @teacher.photo.url, class: "uk-thumbnail" %>
-    <ul class="uk-list uk-list-line">
-      <li><i class="uk-icon-edit"></i> <%= link_to 'Редактировать', edit_teacher_path(@teacher) %></li>
-      <li><i class="uk-icon-trash-o"></i> <%= link_to 'Удалить', @teacher, method: :delete, data: { confirm: 'Вы уверены?' } %></li>
-    </ul>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <%= image_tag @teacher.photo.url, class: "img-responsive img-rounded" %>
+        </p>
+      </div>
+      <div class="col-md-12">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <%= link_to edit_teacher_path(@teacher), class: "btn btn-primary" do %>
+            <%= icon "edit" %> Редактировать
+          <% end %>
+          <%= link_to @teacher, method: :delete, class: "btn btn-danger", data: { confirm: "Вы уверены что хотите удалить #{@teacher.full_name} ?"} do %>
+            <%= icon "trash" %> Удалить
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="uk-width-7-10">
+  <div class="col-md-8">
     <h1><%= @teacher.full_name %></h1>
-    <p>
+    <p class="lead">
       Кафедра: <%= @teacher.cathedra %>
     </p>
   </div>

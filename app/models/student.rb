@@ -6,7 +6,7 @@ class Student < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :middle_name
 
   has_attached_file :photo, 
-          styles: { thumb: "100x100#", small: "150x150>", medium: "200x200" },
+          styles: { thumb: "100x100#", small: "150x150>", medium: "300x200" },
           convert_options: { thumb: "-quality 75 -strip" },
           default_url: "missing_:style.jpg"
 
@@ -25,4 +25,5 @@ class Student < ActiveRecord::Base
   def get_gender
     @gender = self.gender == 1 ? "Мужской" : "Женский"
   end
+
 end

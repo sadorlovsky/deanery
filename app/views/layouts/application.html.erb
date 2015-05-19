@@ -2,24 +2,31 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
+  <%= favicon_link_tag 'favicon.png' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+  <%= render "layouts/navbar" %>
 
-    <%= render "layouts/navbar" %>
+  <div class="container-fluid">
 
-    <div class="uk-grid" data-uk-grid-margin>
-      <div class="uk-width-medium-1-4">
+    <div class="row">
+
+      <div class="col-xs-6 col-sm-3 col-md-2 sidebar">
         <%= render "layouts/sidebar" %>
       </div>
-      <div class="uk-width-medium-3-4">
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <%= yield %>
       </div>
+
     </div>
+
+
   </div>
 
 </body>

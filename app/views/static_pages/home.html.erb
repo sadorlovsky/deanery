@@ -1,1 +1,53 @@
-<h1>h1LANDING PAGE FOR NOT LOGGINED USERS!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag 'landing', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+      <div class="cover-container">
+        <div class="inner cover">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h1>Войти в систему &laquo;Деканат&raquo;</h1>
+            </div>
+
+            <div class="panel-body">
+              <form class="form-horizontal">
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <input class="form-control input-lg" placeholder="Электронная почта" type="email" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <input class="form-control input-lg" placeholder="Пароль" type="password" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Войти</button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

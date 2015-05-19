@@ -1,4 +1,4 @@
-<%= simple_form_for([@group, @student], html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large uk-width-1-1"}}) do |f| %>
+<%= simple_form_for([@group, @student], html: {class: "form-horizontal"}, defaults: {input_html: {class: "form-control"}}) do |f| %>
 
   <% if @student.errors.any? %>
     <div id="error_explanation">
@@ -11,115 +11,257 @@
     </div>
   <% end %>
   
-  <div class="uk-grid">
 
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>ФИО</legend>
-        <div class="uk-form-row" data-uk-tooltip title="Фамилия">
-          <%= f.input_field :last_name, :required => true, placeholder: "Фамилия", :error_html => { :class => 'cant_be_blank'} %>
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Фио</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :last_name, "Фамилия", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :last_name, required: true, placeholder: "Фамилия" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="Имя">
-          <%= f.input_field :first_name, :required => true, placeholder: "Имя", :error_html => { :class => 'cant_be_blank'} %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :first_name, "Имя", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :first_name, required: true, placeholder: "Имя" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="Отчество">
-          <%= f.input_field :middle_name, :required => true, placeholder: "Отчество", :error_html => { :class => 'cant_be_blank'} %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :middle_name, "Отчество", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :middle_name, required: true, placeholder: "Отчество" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </fieldset>
+
+      </div>
+
     </div>
 
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>Контакты</legend>
-        <div class="uk-form-row" data-uk-tooltip title="Адрес">
-          <%= f.input_field :address, placeholder: "Адрес" %>
+    <div class="panel panel-default">
+    
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Паспорт</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :passport_ser, "Паспорт: серия", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :passport_ser, required: true, placeholder: "Серия" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="Телефон">
-          <%= f.input_field :phone, placeholder: "Телефон" %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :passport_num, "Паспорт: номер", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :passport_num, required: true, placeholder: "Номер" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="E-mail">
-          <%= f.input_field :email, placeholder: "E-mail" %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :passport_issue_where, "Паспорт: кем выдан", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :passport_issue_where, required: true, placeholder: "Кем выдан" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </fieldset>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :passport_issue_when, "Паспорт: когда выдан", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :passport_issue_when, as: :string, data: {uk_datepicker: "{pos:'bottom', format:'DD.MM.YYYY', minDate:'#{(Date.today - 15.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today).strftime("%d.%m.%Y")}'}"}, required: true, placeholder: "Когда выдан" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>Паспортные данные</legend>
-      <div class="uk-form-row">
-        <div class="uk-grid">
-        
-          <div class="uk-width-1-2" data-uk-tooltip title="Серия">
-            <%= f.input_field :passport_ser, placeholder: "Серия" %>
-          </div>
-          <div class="uk-width-1-2" data-uk-tooltip title="Номер">
-            <%= f.input_field :passport_num, placeholder: "Номер" %>
-          </div>
+  </div>
 
+
+
+  <div class="col-md-6">
+
+    <div class="panel panel-default">
+  
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Контакты</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :address, "Адрес", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :address, placeholder: "Адрес" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :phone, "Телефон", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :phone, placeholder: "Телефон" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :email, "E-mail", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :email, placeholder: "E-mail" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+    
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Допольнительно</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :birth_date, "Дата рождения", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :birth_date, as: :string, data: {uk_datepicker: "{weekstart: 0, i18n: { months:#{ru_months}, weekdays:#{ru_weekdays} }, pos:'top', format:'DD.MM.YYYY', minDate:'#{(Date.today - 35.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today - 15.years).strftime("%d.%m.%Y")}'}"}, required: true, placeholder: "ДД.ММ.ГГГГ" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :code, "Номер студенческого билета", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :code, required: true, placeholder: "Номер студенческого билета" %>
+                <span class="help-block with-errors">Обязательное поле</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :gender, "Пол", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :gender, collection: genders, prompt: "Пол" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :photo, "Фото", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :photo, as: :file, data: {"show-upload": false, "show-caption": false, "initial-preview": "#{image_tag @student.photo.url(:medium)}", "language": "ru", "preview-file-type": "image"}, accept: "image/*" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :class_monitor, "Староста группы", required: false, class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.input_field :class_monitor %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <%= link_to :back, class: "btn btn-default" do %>
+            <%= icon "chevron-left" %></i> Назад
+          <% end %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= button_tag type: "submit", class: "btn btn-primary" do %>
+            <%= icon "save" %> Сохранить
+          <% end %>
         </div>
       </div>
-        <div class="uk-form-row" data-uk-tooltip title="Кем выдан">
-          <%= f.input_field :passport_issue_where, placeholder: "Кем выдан" %>
-        </div>
-        <div class="uk-form-row" data-uk-tooltip title="Когда выдан">
-          <%= f.input_field :passport_issue_when, as: :string, data: {uk_datepicker: "{pos:'bottom', format:'DD.MM.YYYY', minDate:'#{(Date.today - 15.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today).strftime("%d.%m.%Y")}'}"}, placeholder: "Когда выдан" %>
-        </div>
-      </fieldset>
-    </div>
-
-  </div>
-
-  <div class="uk-grid">
-
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>Дата рождения</legend>
-        <div class="uk-form row" data-uk-tooltip title="Дата рождения">
-          <%= f.input_field :birth_date, as: :string, data: {uk_datepicker: "{weekstart: 0, i18n: { months:#{ru_months}, weekdays:#{ru_weekdays} }, pos:'top', format:'DD.MM.YYYY', minDate:'#{(Date.today - 35.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today - 15.years).strftime("%d.%m.%Y")}'}"}, placeholder: "ДД.ММ.ГГГГ" %>
-        </div>
-      </fieldset>
-    </div>
-
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>Дополнительно</legend>
-        <div class="uk-form-row" data-uk-tooltip title="Номер студенческого билета">
-          <%= f.input_field :code, placeholder: "Номер студенческого билета" %>
-        </div>
-        <div class="uk-form-row" data-uk-tooltip title="Пол">
-          <div class="uk-button uk-button-large uk-width-1-2 uk-form-select" data-uk-form-select>
-            <span></span>
-            <i class="uk-icon-caret-down"></i>
-            <%= f.input_field :gender, collection: genders, prompt: "Пол" %>
-          </div>
-        </div>
-        <div class="uk-form-row uk-form-file">
-          <button class="uk-button uk-button-large uk-width-1-1">
-            <i class="uk-icon-image"></i> Загрузить фото
-          </button>
-          <%= f.input_field :photo, as: :file %>
-        </div>
-        <div class="uk-form-row">
-          <div class="uk-form-controls">
-            <%= f.input_field :class_monitor %> Староста группы
-          </div>
-        </div>
-      </fieldset>
-    </div>
-
-  </div>
-
-  <div class="uk-grid">
-    <div class="uk-form-row">
-
-      <%= link_to :back, class: "uk-button uk-button-large" do %>
-        <i class="uk-icon-chevron-left"></i> Назад
-      <% end %>
-
-      <%= button_tag type: "submit", class: "uk-button uk-button-primary uk-button-large" do %>
-        <i class="uk-icon-save"></i> Сохранить
-      <% end %>
-
     </div>
   </div>
 

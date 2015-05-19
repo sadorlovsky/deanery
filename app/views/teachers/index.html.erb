@@ -1,12 +1,10 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
 <h1>Преподаватели</h1>
 
-<table class="uk-table uk-table-hover">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>ФИО</th>
@@ -23,4 +21,6 @@
   </tbody>
 </table>
 
-<%= link_to "Новый преподаватель", new_teacher_path, class: "uk-button uk-button-large" %>
+<%= link_to new_teacher_path, class: "btn btn-primary" do %>
+  <%= icon "plus" %> Новый преподаватель
+<% end %>

@@ -1,15 +1,18 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
-<div class="uk-grid">
-  <div class="uk-width-1-2">
-    <p><%= @discipline.title %></p>
-    <p><%= @discipline.description %></p>
-    <p>
-      <i class="uk-icon-edit"></i> <%= link_to 'Редактировать', edit_discipline_path(@discipline) %>
-    </p>
-  </div>
+<h1><%= @discipline.title %></h1>
+
+<p class="lead">
+  <%= @discipline.description %>
+</p>
+
+<div class="btn-group role="group" aria-label="...">
+  <%= link_to edit_discipline_path(@discipline), class: "btn btn-primary" do %>
+    <%= icon "edit" %> Редактировать
+  <% end %>
+  <%= link_to @student, method: :delete, class: "btn btn-danger", data: { confirm: "Вы уверены что хотите удалить #{@discipline.title} ?"} do %>
+    <%= icon "trash" %> Удалить
+  <% end %>
 </div>

@@ -14,6 +14,32 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery-fileupload/basic
-//= require uikit
+//= require fileinput
+//= require fileinput_locale_ru
+//= require bootstrap-switch
+//= require bootstrap-sprockets
+//= require data-confirm-modal
+//= require validator.js
 //= require_tree .
 //= require turbolinks
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('[type="checkbox"]').bootstrapSwitch({
+    onText: "Да",
+    onColor: "success",
+    offText: "Нет"
+  });
+
+  dataConfirmModal.setDefaults({
+    title: 'Подтверждение',
+    commit: 'Да',
+    cancel: 'Отмена'
+  });
+
+  $('form').validator({
+    delay: 200
+  });
+
+});

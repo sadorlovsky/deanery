@@ -1,30 +1,36 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
-<div class="uk-grid">
-  <div class="uk-width-1-1">
-    <div class="uk-panel uk-panel-box">
-      <h1><%= @group.name %></h1>
-      <p>Курс: <%= @group.course %></p>
-      <p>Направление: <%= "##{@group.code} '#{@group.branch}'" %></p>
-      <p>Квалификация: <%= @group.get_qualification %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
 
-      <%= link_to edit_group_path(@group) do %>
-        <i class="uk-icon-edit"></i> Редактировать
-      <% end %> |
-      <%= link_to @group, method: :delete, data: { confirm: 'Вы уверены?' } do %>
-        <i class="uk-icon-trash-o"></i> Удалить
+    <h1><%= @group.name %></h1>
+    <p class="lead">
+      <%= @group.course %> курс
+    </p>
+    <p class="lead">
+      Направление подготовки: #<%= @group.code %>
+      <strong><%= @group.branch %></strong>
+      <span class="label label-default"><%= @group.get_qualification %></span>
+    </p>
+
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to edit_group_path(@group), class: "btn btn-primary" do %>
+        <%= icon "edit" %> Редактировать
+      <% end %>
+      <%= link_to @group, class: "btn btn-danger", method: :delete, data: { confirm: "Вы уверены что хотите удалить #{@group.name} ?" } do %>
+        <%= icon "trash" %> Удалить
       <% end %>
     </div>
+
   </div>
 </div>
 
 <% if @group.students.count > 0 %>
-<h2>Студенты группы</h2>
-<table class="uk-table uk-table-hover">
+<h2>В группе <%= @group.students.count %> студентов</h2>
+<div class="table-responsive">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>#</th>
@@ -42,8 +48,11 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
-<h2>Студентов нет</h2>
+<h2>Студентов в группе нет</h2>
 <% end %>
 
-<%= link_to "Новый студент", new_group_student_path(@group), class: "uk-button uk-button-large" %>
+<%= link_to new_group_student_path(@group), class: "btn btn-primary" do %>
+  <%= icon "plus" %> Новый студент
+<% end %>

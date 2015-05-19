@@ -1,54 +1,98 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
-<div class="uk-grid">
-    <div class="uk-width-3-10">
-      <%= image_tag @student.photo.url, class: "uk-thumbnail" %>
-      <ul class="uk-list uk-list-line">
-        <li><i class="uk-icon-chevron-left"></i> <%= link_to 'К группе', @student.group %></li>
-        <li><i class="uk-icon-edit"></i> <%= link_to 'Редактировать', edit_student_path(@student) %></li>
-        <li><i class="uk-icon-trash-o"></i> <%= link_to 'Удалить', @student, method: :delete, data: { confirm: 'Вы уверены?' } %></li>
-      </ul>
-    </div>
-    <div class="uk-width-7-10">
-      <h1><%= @student.full_name %></h1>
-      <p>
-        Группа: <%= "#{@student.group.name} (#{@student.group.course} курс)" %>
-        <% if @student.class_monitor? %><i class="uk-icon-star uk-icon-hover"></i> СТАРОСТА<% end %>
-      </p>
-      <p>
-        Направление: <%= "#{@student.group.code} \"#{@student.group.branch}\" (#{@student.group.get_qualification})" %>
-      </p>
-      <p>
-        Номер студенческого билета: <%= @student.code %>
-      </p>
-      <div class="uk-grid">
-        <div class="uk-width-1-2">
-          <p>
-            Паспорт: <%= "#{@student.passport_ser} #{@student.passport_num}" %>
-          </p>
-          <p>
-            Выдан: <%= "#{@student.passport_issue_where} #{@student.passport_issue_when}" %>
-          </p>
-        </div>
-        <div class="uk-width-1-2">
-          <p>
-            Дата рождения: <%= @student.birth_date %>
-          </p>
-          <p>
-            Адрес: <%= @student.address %>
-          </p>
-          <p>
-            Телефон: <%= @student.phone %>
-          </p>
-          <p>
-            E-mail: <%= @student.email %>
-          </p>
-        </div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <%= image_tag @student.photo.url, class: "img-responsive img-rounded" %>
+        </p>
       </div>
-
+      <div class="col-md-12">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <%= link_to edit_student_path(@student), class: "btn btn-primary" do %>
+            <%= icon "edit" %> Редактировать
+          <% end %>
+          <%= link_to @student, method: :delete, class: "btn btn-danger", data: { confirm: "Вы уверены что хотите удалить #{@student.full_name} ?"} do %>
+            <%= icon "trash" %> Удалить
+          <% end %>
+        </div>
+        <p>
+          <div class="btn-group btn-block">
+            <button type="button" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Действия <span class="caret"></span></button>
+            <ul class="dropdown-menu btn-block" role="menu">
+              <li>
+                <a href="#"><%= icon('exchange') %> Перевести</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#"><%= icon('ban') %> Отчислить</a>
+              </li>
+            </ul>
+          </div>
+        </p>
+      </div>
     </div>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1><%= @student.full_name %></h1>
+      </div>
+      <div class="panel-body">
+        <p class="lead text-center">
+          <span class="label label-info"><%= @student.group.name %></span>
+          <span class="label label-info"><%= @student.group.course %> Курс</span>
+          <span class="label label-info"><%= @student.group.branch %></span>
+          <span class="label label-info"><%= @student.group.get_qualification %></span>
+          <% if @student.class_monitor? %>
+            <span class="label label-warning">Староста</span>
+          <% end %>
+        </p>
+
+        <div role="tabpanel">
+
+          <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li role="presentation" class="active"><a href="#passport" aria-controls="passport" role="tab" data-toggle="tab">Паспортные данные</a></li>
+            <li role="presentation"><a href="#contacts" aria-controls="contacts" role="tab" data-toggle="tab">Контакты</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="passport">
+              <p>
+                <ul class="list-unstyled">
+                  <li>
+                    Серия и номер: <strong><%= "#{@student.passport_ser} #{@student.passport_num}" %></strong>
+                  </li>
+                  <li>
+                    Выдан: <strong><%= "#{@student.passport_issue_where} #{@student.passport_issue_when}" %></strong>
+                  </li>
+                  <li>
+                    Дата рождения: <strong><%= @student.birth_date %></strong>
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="contacts">
+              <p>
+                <ul class="list-unstyled">
+                  <li>Адрес: <strong><%= @student.address %></strong></li>
+                  <li>Телефон: <strong><%= @student.phone %></strong></li>
+                  <li>E-mail: <strong><%= @student.email %></strong></li>
+                </ul>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="panel-footer">
+        Студенческий билет &#x2116; <strong><%= @student.code %></strong>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,12 +1,10 @@
 <% if notice %>
-<div class="uk-alert uk-alert-success">
-  <%= notice %>
-</div>
+  <%= render "layouts/notice" %>
 <% end %>
 
 <h1>Студенты <% if @group %>группы <%= @group.name %><% end %></h1>
 
-<table class="uk-table uk-table-hover">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Код</th>
@@ -26,4 +24,3 @@
     <% end %>
   </tbody>
 </table>
-

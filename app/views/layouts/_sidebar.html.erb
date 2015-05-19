@@ -1,69 +1,31 @@
-<div class="uk-sticky-placeholder">
-  <div class="uk-panel uk-panel-box" data-uk-sticky="{top:65}">
-    <ul class="uk-nav uk-nav-side">
-      <% if current_page? students_path %>
-      <li class="uk-active">
-      <% else %>
-      <li>
-      <% end %>
-        <%= link_to students_path do %>
-          <i class="uk-icon-list"></i> Студенты
-        <% end %>
-      </li>
+<ul class="nav nav-sidebar">
 
-      <li class="uk-nav-divider"></li>
-      
-      <% if current_page? groups_path %>
-      <li class="uk-active">
-      <% else %>
-      <li>
-      <% end %>
-        <%= link_to groups_path do %>
-          <i class="uk-icon-list"></i> Группы
-        <% end %>
-      </li>
+  <%= active_link_to students_path, wrap_tag: :li do %>
+    <i class="uk-icon-list"></i> Студенты
+  <% end %>
 
-      <li class="uk-nav-divider"></li>
+  <%= active_link_to groups_path, wrap_tag: :li do %>
+    <i class="uk-icon-list"></i> Группы
+  <% end %>
 
-      <% if current_page? teachers_path %>
-      <li class="uk-active">
-      <% else %>
-      <li>
-      <% end %>
-        <%= link_to teachers_path do %>
-          <i class="uk-icon-list"></i> Преподаватели
-        <% end %>
-      </li>
+  <%= active_link_to teachers_path, wrap_tag: :li do %>
+    <i class="uk-icon-list"></i> Преподаватели
+  <% end %>
 
-      <li class="uk-nav-divider"></li>
+  <%= active_link_to disciplines_path, wrap_tag: :li do %>
+    <i class="uk-icon-list"></i> Предметы
+  <% end %>
+  
+</ul>
 
-      <% if current_page? disciplines_path %>
-      <li class="uk-active">
-      <% else %>
-      <li>
-      <% end %>
-        <%= link_to disciplines_path do %>
-          <i class="uk-icon-list"></i> Предметы
-        <% end %>
-      </li>
-      
-      <li class="uk-nav-divider"></li>
+<ul class="nav nav-sidebar">
 
-      <li class="uk-nav-header">Успеваемость</li>
-      <% if current_page? timetables_path %>
-      <li class="uk-active">
-      <% else %>
-      <li>
-      <% end %>
-        <%= link_to timetables_path do %>
-          <i class="uk-icon-calendar"></i> Расписание
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "" do %>
-          <i class="uk-icon-star"></i> Оценки
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
+  <%= active_link_to timetables_path, wrap_tag: :li do %>
+    <i class="uk-icon-calendar"></i> Расписание
+  <% end %>
+
+  <%= active_link_to "/fuck", wrap_tag: :li do %>
+    <i class="uk-icon-star"></i> Оценки
+  <% end %>
+
+</ul>

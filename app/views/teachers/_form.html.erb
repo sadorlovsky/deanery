@@ -1,4 +1,4 @@
-<%= simple_form_for(@teacher, html: {class: "uk-form"}, defaults: {input_html: {class: "uk-form-large uk-width-1-1"}}) do |f| %>
+<%= simple_form_for(@teacher, html: {class: "form-horizontal"}, defaults: {input_html: {class: "form-control"}}) do |f| %>
   
   <% if @teacher.errors.any? %>
     <div id="error_explanation">
@@ -11,64 +11,68 @@
     </div>
   <% end %>
 
-  <div class="uk-grid">
-
-    <div class="uk-width-1-3">
-      <fieldset>
-        <legend>ФИО</legend>
-        <div class="uk-form-row" data-uk-tooltip title="Фамилия">
-          <%= f.input_field :last_name, :required => true, placeholder: "Фамилия", :error_html => { :class => 'cant_be_blank'} %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :last_name, "Фамилия", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :last_name, required: true, placeholder: "Фамилия" %>
+          <span class="help-block with-errors">Обязательное поле</span>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="Имя">
-          <%= f.input_field :first_name, :required => true, placeholder: "Имя", :error_html => { :class => 'cant_be_blank'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :first_name, "Имя", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :first_name, required: true, placeholder: "Имя" %>
+          <span class="help-block with-errors">Обязательное поле</span>
         </div>
-        <div class="uk-form-row" data-uk-tooltip title="Отчество">
-          <%= f.input_field :middle_name, :required => true, placeholder: "Отчество", :error_html => { :class => 'cant_be_blank'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :middle_name, "Отчество", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :middle_name, required: true, placeholder: "Отчество" %>
+          <span class="help-block with-errors">Обязательное поле</span>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>Дата рождения</legend>
-        <div class="uk-form row" data-uk-tooltip title="Дата рождения">
-          <%= f.input_field :birth_date, as: :string, data: {uk_datepicker: "{weekstart: 0, i18n: { months:#{ru_months}, weekdays:#{ru_weekdays} }, pos:'top', format:'DD.MM.YYYY', minDate:'#{(Date.today - 80.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today - 20.years).strftime("%d.%m.%Y")}'}"}, placeholder: "ДД.ММ.ГГГГ" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :birth_date, "Дата рождения", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :birth_date, as: :string, data: {uk_datepicker: "{weekstart: 0, i18n: { months:#{ru_months}, weekdays:#{ru_weekdays} }, pos:'top', format:'DD.MM.YYYY', minDate:'#{(Date.today - 35.years).strftime("%d.%m.%Y")}', maxDate:'#{(Date.today - 15.years).strftime("%d.%m.%Y")}'}"}, required: true, placeholder: "ДД.ММ.ГГГГ" %>
+          <span class="help-block with-errors">Обязательное поле</span>
         </div>
-      </fieldset>
+      </div>
     </div>
-    
-    <div class="uk-width-1-3">
-    <fieldset>
-      <legend>Дополнительно</legend>
-      <div class="uk-form-row" data-uk-tooltip title="Пол">
-        <div class="uk-button uk-button-large uk-width-1-2 uk-form-select" data-uk-form-select>
-          <span></span>
-          <i class="uk-icon-caret-down"></i>
-          <%= f.input_field :gender, collection: genders, prompt: "Пол" %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :photo, "Фото", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :photo, as: :file, data: {"show-upload": false, "show-caption": false, "initial-preview": "#{image_tag @teacher.photo.url(:medium)}", "language": "ru", "preview-file-type": "image"}, accept: "image/*" %>
         </div>
       </div>
-      <div class="uk-form-row">
-         <%= f.input_field :cathedra, placeholder: "Кафедра"%>
+      <div class="form-group">
+        <%= f.label :cathedra, "Кафедра", required: false, class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.input_field :cathedra, placeholder: "Кафедра"%>
+        </div>
       </div>
-      <div class="uk-form-row uk-form-file">
-        <button class="uk-button uk-button-large uk-width-1-1">
-          <i class="uk-icon-image"></i> Загрузить фото
-        </button>
-        <%= f.input_field :photo, as: :file %>
-      </div>
-    </fieldset>
     </div>
-
   </div>
 
-  <div class="uk-grid">
-    <div class="uk-form-row">
 
-      <%= link_to :back, class: "uk-button uk-button-large" do %>
-        <i class="uk-icon-chevron-left"></i> Назад
-      <% end %>
-
-      <%= button_tag type: "submit", class: "uk-button uk-button-primary uk-button-large" do %>
-        <i class="uk-icon-save"></i> Сохранить
-      <% end %>
-
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <%= link_to :back, class: "btn btn-default" do %>
+            <%= icon "chevron-left" %></i> Назад
+          <% end %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= button_tag type: "submit", class: "btn btn-primary" do %>
+            <%= icon "save" %> Сохранить
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   

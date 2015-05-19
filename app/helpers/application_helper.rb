@@ -2,7 +2,7 @@ module ApplicationHelper
   require 'json'
 
   def full_title(page_title)
-    base_title = "Diploma"
+    base_title = "Деканат"
     if page_title.empty?
       base_title
     else
@@ -31,6 +31,6 @@ module ApplicationHelper
   end
 
   def qualifications
-    qualifications = [["Магистр", 1], ["Бакалавр", 0]]
+    qualifications = [["Магистратура", 1], ["Бакалавриват", 0]]
   end
 end

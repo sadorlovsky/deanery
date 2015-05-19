@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :get_group, only: [:index, :create, :new]
+  before_action :remove_photo, only: :update
   
   # GET /students
   # GET /students.json
@@ -85,5 +86,12 @@ class StudentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit!
+    end
+
+    def remove_photo
+      if @student.photo.file?
+        @student.photo = nil
+        @student.save
+      end
     end
 end

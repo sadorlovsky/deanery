@@ -6,9 +6,11 @@ gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
-#gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 
-#gem 'bootswatch-rails'
+gem 'bootswatch-rails'
+
+gem 'font-awesome-sass'
 
 #gem 'simple_enum', '~> 2.0.0'
 
@@ -17,7 +19,11 @@ gem 'jquery-fileupload-rails'
 
 gem 'simple_form'
 
-gem 'uikit-sass-rails'
+#gem 'uikit-sass-rails'
+
+gem 'active_link_to'
+
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'devise'
 

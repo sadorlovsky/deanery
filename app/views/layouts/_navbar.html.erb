@@ -1,46 +1,56 @@
-<nav class="uk-navbar uk-margin-large-bottom uk-fixed-nav">
-  <a class="uk-navbar-brand uk-hidden-small" href="/">
-    Diploma
-  </a>
-  <div class="uk-navbar-flip">
-    <ul class="uk-navbar-nav uk-hidden-small">
-      <li>
-        <div class="uk-navbar-content">
-          <form action="" class="uk-search" data-uk-search>
-            <input class="uk-search-field" type="search" placeholder="Поиск...">
-          </form>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><%= full_title(yield(:title)) %></a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+          <a href="/"><%= icon "home" %> Главная</a>
+        </li>
+        <li>
+          <a href="/settings"><%= icon "gear" %> Настройки</a>
+        </li>
+        <% if user_signed_in? %>
+        <li class="dropdown">
+          <a class="dropdown-toggle" aria-expanded="false" role="button" data-toggle="dropdown">
+            Аккаунт: <%= current_user.name %>
+            <span class="caret"></span>
+          </a>
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                <%= link_to current_user do %>
+                <i class="uk-icon-desktop"></i> Открыть профиль
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                <i class="uk-icon-sign-out"></i> Выйти из системы
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <% end %>
+        <li>
+          <a href="/help"><%= icon "info-circle" %> Помощь</a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Поиск...">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary active"><%= icon "search" %></button>
+          </span>
         </div>
-      </li>
-      <li>
-        <a href="/"><i class="uk-icon-home"></i> Главная</a>
-      </li>
-      <li>
-        <a href="/settings"><i class="uk-icon-cog"></i> Настройки</a>
-      </li>
-      <% if user_signed_in? %>
-      <li class="uk-parent" data-uk-dropdown="{mode:'click'}">
-        <a><i class="uk-icon-user"></i> Аккаунт: <%= current_user.name %></a>
-        <div class="uk-dropdown uk-dropdown-navbar">
-          <ul class="uk-nav uk-nav-navbar">
-            <li>
-              <%= link_to current_user do %>
-              <i class="uk-icon-desktop"></i> Открыть профиль
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, :method => :delete do %>
-              <i class="uk-icon-sign-out"></i> Выйти из системы
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <% end %>
-      <li>
-        <a href="/help"><i class="uk-icon-info"></i> Помощь</a>
-      </li>
-    </ul>
+      </form>
+    </div>
   </div>
-  <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-  <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
 </nav>

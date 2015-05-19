@@ -18,7 +18,7 @@ class Group < ActiveRecord::Base
   end
 
   def get_qualification
-    @qualification = self.qualification == 1 ? "Магистр" : "Бакалавр"
+    @qualification = self.qualification == 1 ? "Магистратура" : "Бакалавриат"
   end
 
 end
