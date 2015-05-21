@@ -46,11 +46,4 @@ $(function () {
     delay: 200
   });
 
-  data = ['fuck', 'suck', 'luck'];
-
-  $('.typeahead').typeahead({
-    name: 'students'
-    source: "/students.json"
-  });
-
 });
