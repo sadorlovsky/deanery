@@ -12,6 +12,8 @@ gem 'bootstrap-sass'
 
 gem 'bootswatch-rails'
 
+gem 'nprogress-rails'
+
 gem 'font-awesome-sass'
 
 #gem 'simple_enum', '~> 2.0.0'

@@ -24,6 +24,11 @@
 @import "bootstrap-switch";
 @import "bootstrap-datepicker";
 
+
+$nprogress-color: $brand-success;
+@import "nprogress";
+@import "nprogress-bootstrap";
+
 @import "students";
 
 body {

@@ -14,14 +14,16 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery-fileupload/basic
+//= require bootstrap-sprockets
 //= require fileinput
 //= require fileinput_locale_ru
 //= require bootstrap-switch
 //= require bootstrap-datepicker
-//= require bootstrap-sprockets
 //= require bootstrap3-typeahead
 //= require data-confirm-modal
 //= require validator.js
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 //= require turbolinks
 
