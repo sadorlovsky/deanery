@@ -42,20 +42,6 @@
   <div class="row">
     <div class="col-md-5">
       <div class="form-group">
-        <%= f.label :course, "Курс", required: false, class: "col-sm-4 control-label" %>
-        <div class="col-sm-8"> 
-          <%= f.input_field :course, placeholder: "Курс", min: 1, max: 6, required: true %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <span class="help-block with-errors">Курс 1 - 6. Обязательное поле.</span>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-5">
-      <div class="form-group">
         <%= f.label :qualification, "Квалификация", required: false, class: "col-sm-4 control-label" %>
         <div class="col-sm-8">
           <%= f.input_field :qualification, collection: qualifications, prompt: "Квалификация", required: true %>

@@ -21,4 +21,10 @@ class Group < ActiveRecord::Base
     @qualification = self.qualification == 1 ? "Магистратура" : "Бакалавриат"
   end
 
+  def course
+    enroll = Date.strptime("01.07.#{self.name.split('-')[1]}", "%d.%m.%y")
+    now = Date.today
+    @course = now.year - enroll.year + ((now.month > enroll.month || (now.month == enroll.month && now.day >= enroll.day)) ? 1 : 0)
+  end
+
 end

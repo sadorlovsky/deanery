@@ -14,8 +14,16 @@
   <tbody>
     <% @disciplines.each do |discipline| %>
     <tr>
-      <td class="uk-width-1-5"><%= link_to discipline.title, discipline %></td>
-      <td class="uk-width-1-5"><%= discipline.description %></td>
+      <td>
+        <%= link_to discipline.title, discipline %>
+      </td>
+      <td>
+        <% if discipline.description.empty? %>
+          Отсутствует
+        <% else %>
+          <%= discipline.description %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

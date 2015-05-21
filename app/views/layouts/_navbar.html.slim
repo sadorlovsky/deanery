@@ -17,11 +17,11 @@ nav.navbar.navbar-fixed-top.navbar-default
         li
           a href="/" 
             =' icon "home"
-            | Главная
+            span.hidden-sm Главная
         li
           a href="/settings"
             =' icon "gear"
-            | Настройки
+            span.hidden-sm Настройки
 
         - if user_signed_in?
           li.dropdown
@@ -43,8 +43,7 @@ nav.navbar.navbar-fixed-top.navbar-default
         li
           a href="/help"
             =' icon "info-circle"
-            | Помощь
-
+            span.hidden-sm Помощь
 
       form.navbar-form.navbar-right role="search"
         .input-group

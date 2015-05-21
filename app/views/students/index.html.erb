@@ -11,7 +11,7 @@
       <th>ФИО</th>
       <th>Дата рождения</th>
       <th>Группа</th>
-      <th></th>
+      <th>Курс</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +20,10 @@
       <td><%= student.code %></td>
       <td><%= link_to student.full_name, student %></td>
       <td><%= link_to student.full_name, student %></td>
-      <td><%= link_to student.group.name, group_students_path(student.group) %></td>
-      <td><% if student.class_monitor? %><%= icon "star" %><% end %></td>
+      <td>
+        <%= link_to student.group.name, group_students_path(student.group) %>
+      </td>
+      <td><%= student.group.course %></td>
     </tr>
     <% end %>
   </tbody>
