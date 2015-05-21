@@ -1,0 +1,26 @@
+ul.nav.nav-sidebar
+  = active_link_to students_path, wrap_tag: :li do
+    =' icon "list"
+    | Студенты
+
+  = active_link_to groups_path, wrap_tag: :li do
+    =' icon "list"
+    | Группы
+
+  = active_link_to teachers_path, wrap_tag: :li do
+    =' icon "list"
+    | Преподаватели
+
+  = active_link_to disciplines_path, wrap_tag: :li do
+    =' icon "list"
+    | Предметы
+
+  
+ul.nav.nav-sidebar
+  = active_link_to timetables_path, wrap_tag: :li do 
+    =' icon "calendar"
+    | Расписание
+    
+  = active_link_to "/fuck", wrap_tag: :li do 
+    =' icon "star"
+    | Оценки

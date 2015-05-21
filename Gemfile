@@ -6,6 +6,8 @@ gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
+gem 'slim'
+
 gem 'bootstrap-sass'
 
 gem 'bootswatch-rails'
