@@ -21,11 +21,16 @@
 //= require bootstrap-datepicker
 //= require bootstrap3-typeahead
 //= require data-confirm-modal
-//= require validator.js
+//= require validator
+//= require inputmask
 //= require nprogress
 //= require nprogress-turbolinks
 //= require_tree .
 //= require turbolinks
+
+NProgress.configure({
+  showSpinner: false
+});
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();

@@ -23,7 +23,7 @@ class Group < ActiveRecord::Base
 
   def course
     enroll = Date.strptime("01.07.#{self.name.split('-')[1]}", "%d.%m.%y")
-    now = Date.today
+    now = Date.current
     @course = now.year - enroll.year + ((now.month > enroll.month || (now.month == enroll.month && now.day >= enroll.day)) ? 1 : 0)
   end
 

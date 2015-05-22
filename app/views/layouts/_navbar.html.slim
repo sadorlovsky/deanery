@@ -9,40 +9,26 @@ nav.navbar.navbar-fixed-top.navbar-default
         span.icon-bar
         span.icon-bar
 
-      a.navbar-brand href="#"
+      a.navbar-brand href="/"
         = full_title(yield(:title))
 
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
           a href="/" 
-            =' icon "home"
+            => icon "home"
             span.hidden-sm Главная
         li
           a href="/settings"
-            =' icon "gear"
+            => icon "gear"
             span.hidden-sm Настройки
 
         - if user_signed_in?
-          li.dropdown
-            a.dropdown-toggle role="button" data-toggle="dropdown"
-              | Аккаунт:
-              = current_user.name
-              span.caret
+          = render "layouts/profilebar"
 
-            .uk-dropdown.uk-dropdown-navbar
-              ul.uk-nav.uk-nav-navbar
-                li
-                  = link_to current_user do
-                    =' icon "desktop"
-                    | Открыть профиль
-                li
-                  = link_to destroy_user_session_path, :method => :delete do
-                    =' icon "sign-out"
-                    | Выйти из системы
         li
           a href="/help"
-            =' icon "info-circle"
+            => icon "info-circle"
             span.hidden-sm Помощь
 
       form.navbar-form.navbar-right role="search"

@@ -1,0 +1,16 @@
+li.dropdown
+  a.dropdown-toggle role="button" data-toggle="dropdown"
+    => icon "user"
+    | Профиль
+
+  ul.dropdown-menu role="menu"
+    /li.text-center = link_to current_user.name, current_user
+    li.text-center
+      = link_to current_user do
+        p
+          strong = current_user.name
+        p = image_tag Student.first.photo.url(:thumb), class: "img-circle"
+    li.divider role="presentation"
+    li = link_to destroy_user_session_path, method: :delete do
+      => icon "sign-out"
+      | Выйти из системы
