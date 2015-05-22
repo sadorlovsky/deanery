@@ -1,4 +1,5 @@
 <%= simple_form_for(@user, :html => {:class => "form-horizontal center"}) do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -12,19 +13,25 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label :last_name, "Фамилия" %><br>
+    <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :email %><br>
+    <%= f.label :first_name, "Имя" %><br>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Электронная почта" %><br>
     <%= f.text_field :email, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, class: "form-control" %>
+    <%= f.label :photo %><br>
+    <%= f.input_field :photo, as: :file, data: {"show-upload": false, "show-caption": false, "initial-preview": "#{image_tag @user.photo.url(:thumb)}", "language": "ru", "preview-file-type": "image"}, accept: "image/*" %>
   </div>
   <div class="form-group">
-    <%= f.submit class: "btn btn-primary" %>
+  <%= button_tag type: "submit", class: "btn btn-primary" do %>
+    <%= icon "save" %> Сохранить
+  <% end %>
     <%= link_to 'Назад', users_path, class: "btn btn-default" %>
   </div>
 <% end %>

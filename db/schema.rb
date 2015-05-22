@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521122127) do
+ActiveRecord::Schema.define(version: 20150522090054) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string   "title"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150521122127) do
     t.string   "branch"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "qualification"
+    t.string   "qualification"
   end
 
   create_table "students", force: :cascade do |t|
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 20150521122127) do
     t.string   "address"
     t.float    "rating"
     t.integer  "code"
-    t.integer  "gender"
     t.string   "passport_ser"
     t.string   "passport_num"
     t.string   "passport_issue_where"
     t.date     "passport_issue_when"
     t.boolean  "class_monitor"
+    t.string   "sex"
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 20150521122127) do
   add_index "timetables", ["group_id"], name: "index_timetables_on_group_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.string   "email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -100,6 +99,12 @@ ActiveRecord::Schema.define(version: 20150521122127) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "last_name"
+    t.string   "first_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

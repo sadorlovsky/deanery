@@ -5,7 +5,7 @@
 <div class="row">
   <% @users.each do |user| %>
     <%= div_for(user, class: "col-md-2 well") do %>
-      <p><%= user.name %></p>
+      <p><%= user.full_name %></p>
       <p><%= user.email %></p>
       <p><%= link_to 'изменить', edit_user_path(user) %></p>
     <% end %>

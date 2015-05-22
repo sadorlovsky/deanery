@@ -16,11 +16,11 @@ nav.navbar.navbar-fixed-top.navbar-default
       ul.nav.navbar-nav.navbar-right
         li
           a href="/" 
-            => icon "home"
+            => icon "home", class: "fa-fw"
             span.hidden-sm Главная
         li
           a href="/settings"
-            => icon "gear"
+            => icon "gear", class: "fa-fw"
             span.hidden-sm Настройки
 
         - if user_signed_in?
@@ -28,7 +28,7 @@ nav.navbar.navbar-fixed-top.navbar-default
 
         li
           a href="/help"
-            => icon "info-circle"
+            => icon "info-circle", class: "fa-fw"
             span.hidden-sm Помощь
 
       form.navbar-form.navbar-right role="search"

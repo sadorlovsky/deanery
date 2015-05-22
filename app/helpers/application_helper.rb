@@ -10,12 +10,6 @@ module ApplicationHelper
     end
   end
 
-  def sortable(column, title = nil)
-    title ||= column
-    direction = column == params[:sort] && params[:direction] == "asc" ? "desc" : "asc"
-    link_to title, sort: column, direction: direction
-  end
-
   def ru_months
     months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
     months.to_json
@@ -26,11 +20,4 @@ module ApplicationHelper
     weekdays.to_json
   end
 
-  def genders
-    genders = [["Мужской", 1], ["Женский", 0]]
-  end
-
-  def qualifications
-    qualifications = [["Магистратура", 1], ["Бакалавриват", 0]]
-  end
 end

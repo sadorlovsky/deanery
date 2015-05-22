@@ -1,26 +1,26 @@
 ul.nav.nav-sidebar
   = active_link_to students_path, wrap_tag: :li do
-    => icon "list"
+    => icon "list", class: "fa-fw"
     | Студенты
 
   = active_link_to groups_path, wrap_tag: :li do
-    => icon "list"
+    => icon "list", class: "fa-fw"
     | Группы
 
   = active_link_to teachers_path, wrap_tag: :li do
-    => icon "list"
+    => icon "list", class: "fa-fw"
     | Преподаватели
 
   = active_link_to disciplines_path, wrap_tag: :li do
-    => icon "list"
+    => icon "list", class: "fa-fw"
     | Предметы
 
   
 ul.nav.nav-sidebar
   = active_link_to timetables_path, wrap_tag: :li do 
-    => icon "calendar"
+    => icon "calendar", class: "fa-fw"
     | Расписание
     
   = active_link_to "/fuck", wrap_tag: :li do 
-    => icon "star"
+    => icon "star", class: "fa-fw"
     | Оценки

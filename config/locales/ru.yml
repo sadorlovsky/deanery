@@ -6,9 +6,13 @@ ru:
   date:
     formats:
       default: "%d.%m.%Y"
-  enums:
-    student:
-      gender:
-        male: "мужской"
-        female: "женский"
+  enumerize:
+    defaults:
+      sex:
+        male: "Мужской"
+        female: "Женский"
+    group:
+      qualification:
+        bachelor: "Бакалавриат"
+        master: "Магистратура"
 

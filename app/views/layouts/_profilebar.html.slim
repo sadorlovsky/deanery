@@ -1,16 +1,15 @@
-li.dropdown
+li class=(is_active_link?(users_path, :inclusive) ? 'dropdown active' : 'dropdown')
   a.dropdown-toggle role="button" data-toggle="dropdown"
-    => icon "user"
-    | Профиль
+    => icon "user", class: "fa-fw"
+    span.hidden-sm Профиль
 
   ul.dropdown-menu role="menu"
-    /li.text-center = link_to current_user.name, current_user
     li.text-center
       = link_to current_user do
         p
-          strong = current_user.name
-        p = image_tag Student.first.photo.url(:thumb), class: "img-circle"
+          strong = current_user.full_name
+        p = image_tag current_user.photo.url(:mini), class: "img-circle img-thumbnail"
     li.divider role="presentation"
-    li = link_to destroy_user_session_path, method: :delete do
+    li.sign_out = link_to destroy_user_session_path, method: :delete do
       => icon "sign-out"
-      | Выйти из системы
+      strong Выйти

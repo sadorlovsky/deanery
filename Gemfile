@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
-# Use SCSS for stylesheets
+
 gem 'sass-rails', '~> 5.0'
 
 gem 'slim'
@@ -16,14 +14,12 @@ gem 'nprogress-rails'
 
 gem 'font-awesome-sass'
 
-#gem 'simple_enum', '~> 2.0.0'
+gem 'enumerize'
 
 gem 'paperclip', '~> 4.2'
 gem 'jquery-fileupload-rails'
 
 gem 'simple_form'
-
-#gem 'uikit-sass-rails'
 
 gem 'active_link_to'
 

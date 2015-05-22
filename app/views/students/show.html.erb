@@ -46,7 +46,7 @@
           <span class="label label-info"><%= @student.group.name %></span>
           <span class="label label-info"><%= @student.group.course %> Курс</span>
           <span class="label label-info"><%= @student.group.branch %></span>
-          <span class="label label-info"><%= @student.group.get_qualification %></span>
+          <span class="label label-info"><%= @student.group.qualification_text %></span>
           <% if @student.class_monitor? %>
             <span class="label label-warning">Староста</span>
           <% end %>

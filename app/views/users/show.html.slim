@@ -1,0 +1,29 @@
+- if notice
+  = render "layouts/notice"
+
+.row
+  .col-md-5
+    .jumbotron.text-center
+      h1 = @user.full_name
+      p = image_tag @user.photo.url(:medium), class: "img-circle img-thumbnail"
+  .col-md-3
+    p.lead
+      | Электронная почта
+      br
+      strong = @user.email
+    p.lead
+      | Телефон
+      br
+      strong +7 (965) 273 00-42
+    p.lead
+      | Должность
+      br
+      strong Сотрудник
+  .col-md-4
+    .list-group
+      = link_to edit_user_path(@user), class: "list-group-item"
+        => icon "newspaper-o", class: "fa-fw"
+        | Изменить контактные данные
+      a.list-group-item href="#"
+        => icon "shield", class: "fa-fw"
+        | Настройки безопасности

@@ -32,7 +32,7 @@ $nprogress-color: $brand-success;
 @import "students";
 
 body {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .navbar {
@@ -95,4 +95,8 @@ body {
 
 .field_with_errors {
   display: inline;
+}
+
+li.sign_out > a:hover {
+  background-color: $brand-danger;
 }

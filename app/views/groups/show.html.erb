@@ -9,7 +9,7 @@
     <p class="lead">
       <span class="label label-default"><%= @group.course %> Курс</span>
       <span class="label label-default"><%= @group.branch %></span>
-      <span class="label label-default"><%= @group.get_qualification %></span>
+      <span class="label label-default"><%= @group.qualification_text %></span>
     </p>
 
     <div class="btn-group" role="group" aria-label="...">
@@ -32,15 +32,15 @@
     <tr>
       <th>#</th>
       <th>ФИО</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @group.students.each_with_index do |student, index| %>
-    <tr>
+    <% if student.class_monitor? %>
+    <tr class="warning">
+    <% end %>
       <td class="uk-width-1-5"><%= index + 1 %></td>
       <td class="uk-width-3-5"><%= link_to student.full_name, student %></td>
-      <td><% if student.class_monitor? %><i class="uk-icon-star uk-icon-hover" data-uk-tooltip title="Староста группы"></i><% end %></td>
     </tr>
     <% end %>
   </tbody>
