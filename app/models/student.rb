@@ -25,4 +25,9 @@ class Student < ActiveRecord::Base
     @full_name = [last_name, first_name, middle_name] * ' '
   end
 
+  def age
+    now = Date.current
+    now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
+  end
+
 end

@@ -8,7 +8,7 @@ li class=(is_active_link?(users_path, :inclusive) ? 'dropdown active' : 'dropdow
       = link_to current_user do
         p
           strong = current_user.full_name
-        p = image_tag current_user.photo.url(:mini), class: "img-circle img-thumbnail"
+        p = image_tag current_user.photo.url(:mini), class: "img-circle"
     li.divider role="presentation"
     li.sign_out = link_to destroy_user_session_path, method: :delete do
       => icon "sign-out"

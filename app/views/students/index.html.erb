@@ -19,7 +19,9 @@
     <tr>
       <td><%= student.code %></td>
       <td><%= link_to student.full_name, student %></td>
-      <td><%= link_to student.full_name, student %></td>
+      <td>
+        <%= "#{ Russian::strftime(student.birth_date, '%d.%m.%Y') } (#{ Russian.p(student.age, '%n год', '%n года', '%n лет') })" %>
+      </td>
       <td>
         <%= link_to student.group.name, group_students_path(student.group) %>
       </td>

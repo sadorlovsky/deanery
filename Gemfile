@@ -29,6 +29,8 @@ gem 'devise'
 
 gem 'devise-i18n'
 
+gem 'cancancan', '~> 1.10'
+
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'rs_russian', github: 'rs-pro/russian'
