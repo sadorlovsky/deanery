@@ -1,0 +1,23 @@
+= simple_form_for(@lesson, defaults: { input_html: { class: "form-control" }}) do |f|
+  .row
+    .col-md-4
+      .form-group
+      = f.association :group, label: "Группа"
+      .form-group
+        = f.association :discipline, label: "Предмет"
+      .form-group
+        = f.association :teacher, label_method: :full_name, label: "Преподаватель"
+      .form-group
+        = f.input :classroom, label: "Аудитория"
+  .row
+    .col-md-4
+      .btn-group.btn-group-justified role="group" aria-label="..."
+        .btn-group role="group"
+          = link_to :back, class: "btn btn-default" do
+            => icon "chevron-left"
+            | Назад
+
+        .btn-group role="group"
+          = button_tag type: "submit", class: "btn btn-primary" do
+            => icon "save"
+            | Сохранить

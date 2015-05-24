@@ -17,10 +17,10 @@ ul.nav.nav-sidebar
 
   
 ul.nav.nav-sidebar
-  = active_link_to timetables_path, wrap_tag: :li do 
+  = active_link_to "/timetable", wrap_tag: :li do 
     => icon "calendar", class: "fa-fw"
     | Расписание
     
-  = active_link_to "/fuck", wrap_tag: :li do 
+  = active_link_to "/progress", wrap_tag: :li do 
     => icon "star", class: "fa-fw"
     | Оценки

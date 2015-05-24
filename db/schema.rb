@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150523070850) do
+ActiveRecord::Schema.define(version: 20150524144345) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20150523070850) do
     t.datetime "updated_at",    null: false
     t.string   "qualification"
   end
+
+  create_table "lessons", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "discipline_id"
+    t.integer  "teacher_id"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.time     "time_start"
+    t.time     "time_end"
+    t.string   "classroom"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "lessons", ["group_id"], name: "index_lessons_on_group_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "last_name",          null: false
@@ -69,21 +84,6 @@ ActiveRecord::Schema.define(version: 20150523070850) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
-
-  create_table "timetables", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "discipline_id"
-    t.integer  "teacher_id"
-    t.date     "date_start"
-    t.date     "date_end"
-    t.time     "time_start"
-    t.time     "time_end"
-    t.string   "classroom"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "timetables", ["group_id"], name: "index_timetables_on_group_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

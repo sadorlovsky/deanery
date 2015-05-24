@@ -1,0 +1,19 @@
+- if notice
+  = render "layouts/notice"
+
+p
+  | Группа:
+  strong =< @lesson.group.name
+p
+  | Предмет:
+  strong =< @lesson.discipline.title
+p
+  | Преподаватель:
+  strong =< @lesson.teacher.full_name
+p
+  | Аудитория:
+  strong =< @lesson.classroom
+
+=> link_to 'Edit', edit_lesson_path(@lesson)
+||
+=< link_to 'Back', lessons_path

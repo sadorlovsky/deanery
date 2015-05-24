@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :timetables
+  resources :lessons
   resources :disciplines
   resources :teachers
   resources :teachers

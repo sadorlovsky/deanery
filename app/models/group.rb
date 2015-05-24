@@ -4,8 +4,8 @@ class Group < ActiveRecord::Base
   enumerize :qualification, in: [:bachelor, :master]
 
   has_many :students
-  # has_many :timetables
-  # has_one :class_monitor, -> { where(last_name: "Мурлыка") }, class_name: "Student"
+  has_many :lessons
+  has_many :disciplines, through: :lessons
 
   normalize :name do |value|
     value = value.squish

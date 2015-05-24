@@ -1,6 +1,6 @@
 class Teacher < ActiveRecord::Base
 
-  has_many :timetables
+  has_many :lessons
 
   before_validation :normalize, on: [:create, :update]
   validates_presence_of :first_name, :last_name, :middle_name
