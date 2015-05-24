@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   before_validation :normalize, on: [:create, :update]
 
   extend Enumerize
-  enumerize :role, in: [:worker, :admin]
+  enumerize :role, in: [:worker, :admin], default: :worker
 
   def normalize
     self.first_name = self.first_name.mb_chars.titleize.to_s

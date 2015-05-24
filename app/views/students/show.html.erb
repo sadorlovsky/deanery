@@ -64,10 +64,10 @@
               <p>
                 <ul class="list-unstyled">
                   <li>
-                    Серия и номер: <strong><%= "#{@student.passport_ser} #{@student.passport_num}" %></strong>
+                    Номер: <strong><%= @student.passport_num %></strong>
                   </li>
                   <li>
-                    Выдан: <strong><%= "#{@student.passport_issue_where} #{Russian.strftime(@student.passport_issue_when, "%d.%m.%Y")}" %></strong>
+                    Выдан: <strong><%= "#{@student.passport_where} #{Russian.strftime(@student.passport_when, "%d.%m.%Y")}" %></strong>
                   </li>
                   <li>
                     Дата рождения: <strong><%= Russian.strftime(@student.birth_date, "%d.%m.%Y") %></strong>

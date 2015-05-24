@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :teachers
   resources :teachers
   
-  devise_for :users, :path_prefix => 'my'
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout'}
   resources :users
   
   get 'students', to: 'students#all'

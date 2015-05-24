@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522123314) do
+ActiveRecord::Schema.define(version: 20150523070850) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string   "title"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20150522123314) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "last_name",            null: false
-    t.string   "first_name",           null: false
-    t.string   "middle_name",          null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "last_name",          null: false
+    t.string   "first_name",         null: false
+    t.string   "middle_name",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -46,10 +46,9 @@ ActiveRecord::Schema.define(version: 20150522123314) do
     t.string   "address"
     t.float    "rating"
     t.integer  "code"
-    t.string   "passport_ser"
     t.string   "passport_num"
-    t.string   "passport_issue_where"
-    t.date     "passport_issue_when"
+    t.string   "passport_where"
+    t.date     "passport_when"
     t.boolean  "class_monitor"
     t.string   "sex"
   end

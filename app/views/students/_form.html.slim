@@ -1,0 +1,156 @@
+= simple_form_for([@group, @student], html: {class: "form-horizontal", multipart: true}, defaults: {input_html: {class: "form-control"}}) do |f|
+
+  - if @student.errors.any?
+    = @student.errors.full_messages.each do |msg|
+      .alert.alert-danger role="alert"
+        strong Ошибка!
+        =< msg
+
+  .row
+    .col-md-6
+      .panel.panel-default
+
+        .panel-heading.clearfix
+          h3.panel-title Фио
+
+        .panel-body
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :last_name, "Фамилия", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :last_name, required: true, placeholder: "Фамилия"
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :first_name, "Имя", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :first_name, required: true, placeholder: "Имя"
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :middle_name, "Отчество", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :middle_name, required: true, placeholder: "Отчество"
+                  span.help-block.with-errors Обязательное поле
+
+      .panel.panel-default
+        .panel-heading.clearfix
+          h3.panel-title Паспорт
+
+        .panel-body
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :passport_num, "Номер", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :passport_num, required: true, placeholder: "Номер", data: {mask: "99 99 999999"}
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :passport_where, "Кем выдан", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :passport_where, required: true, placeholder: "Кем выдан"
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :passport_when, "Когда выдан", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :passport_when, as: :string, value: @student.passport_when.strftime("%d.%m.%Y"), required: true, class: "datepicker form-control", placeholder: "Когда выдан"
+                  span.help-block.with-errors Обязательное поле
+
+    .col-md-6
+      .panel.panel-default
+        .panel-heading.clearfix
+          h3.panel-title Контакты
+
+        .panel-body
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :address, "Адрес", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :address, required: true, placeholder: "Адрес"
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :phone, "Телефон", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :phone, required: true, placeholder: "Телефон", data: {mask: "(999) 999 99-99"}
+                  span.help-block.with-errors Обязательное поле
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :email, "E-mail", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :email, placeholder: "E-mail"
+
+      .panel.panel-default
+        .panel-heading.clearfix
+          h3.panel-title Дополнительно
+
+        .panel-body
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :birth_date, "Дата рождения", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :birth_date, as: :string, value: @student.birth_date.strftime("%d.%m.%Y"), required: true, placeholder: "Дата рождения", class: "form-control datepicker"
+                  span.help-block.with-errors Обязательное поле
+          
+          .row
+            .col-md-12
+              .form-group
+                = f.label :code, "Номер студенческого билета", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :code, required: true, placeholder: "Номер студенческого билета"
+                  span.help-block.with-errors Обязательное поле. 6 цифр.
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :sex, "Пол", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :sex, required: true
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :photo, "Фото", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :photo, as: :file, data: {"show-upload": false, "show-caption": false, "initial-preview": "#{image_tag @student.photo.url(:medium)}", "language": "ru", "preview-file-type": "image"}, accept: "image/*"
+
+          .row
+            .col-md-12
+              .form-group
+                = f.label :class_monitor, "Староста группы", required: false, class: "col-sm-4 control-label"
+                .col-sm-8
+                  = f.input_field :class_monitor
+
+  .form-group
+    .col-md-12
+      .btn-group.btn-group-justified role="group" aria-label="..."
+        .btn-group role="group"
+          = link_to :back, class: "btn btn-default" do
+            => icon "chevron-left"
+            | Назад
+
+        .btn-group role="group"
+          = button_tag type: "submit", class: "btn btn-primary" do
+            => icon "save"
+            | Сохранить

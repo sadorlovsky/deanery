@@ -7,6 +7,7 @@
 #= require fileinput_locale_ru
 #= require bootstrap-switch
 #= require bootstrap-datepicker
+#= require bootstrap-datepicker.ru.min
 #= require bootstrap3-typeahead
 #= require data-confirm-modal
 #= require validator
@@ -34,3 +35,6 @@ $ ->
 
   $('form').validator
     delay: 200
+
+  $('.datepicker').datepicker
+    language: "ru"

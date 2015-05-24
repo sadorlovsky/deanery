@@ -25,6 +25,10 @@
     <%= f.text_field :email, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :password, "Пароль" %><br>
+    <%= f.text_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.label :photo %><br>
     <%= f.input_field :photo, as: :file, data: {"show-upload": false, "show-caption": false, "initial-preview": "#{image_tag @user.photo.url(:thumb)}", "language": "ru", "preview-file-type": "image"}, accept: "image/*" %>
   </div>
