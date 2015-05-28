@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :marks
   resources :disciplines
   resources :teachers
   resources :teachers
