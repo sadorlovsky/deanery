@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :lessons
   resources :disciplines
   resources :teachers
   resources :teachers
@@ -12,8 +11,11 @@ Rails.application.routes.draw do
   get 'students/all', to: 'students#all'
 
   resources :students, only: [:destroy, :show, :edit, :update]
+
   resources :groups do
     resources :students, only: [:create, :index, :new]
+    resources :lessons
+    get 'timetable', on: :member
   end
 
   authenticated :user do

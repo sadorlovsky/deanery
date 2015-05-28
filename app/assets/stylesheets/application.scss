@@ -1,6 +1,7 @@
 @import "fileinput";
 @import "bootstrap-switch";
 @import "bootstrap-datepicker";
+@import "bootstrap-editable";
 
 @import "bootstrap-sprockets";
 @import "bootswatch/flatly/variables";
@@ -16,6 +17,7 @@ $nprogress-color: $brand-success;
 @import "nprogress-bootstrap";
 
 @import "students";
+@import "groups";
 
 body {
   padding-top: 70px;
@@ -85,4 +87,19 @@ body {
 
 li.sign_out > a:hover {
   background-color: $brand-danger;
+}
+
+.well-lecture {
+  background-color: $label-primary-bg;
+  color: $label-color;
+}
+
+.well-seminar {
+  background-color: $label-success-bg;
+  color: $label-color;
+}
+
+.well-lab {
+  background-color: $label-info-bg;
+  color: $label-color;
 }

@@ -1,0 +1,34 @@
+- if notice
+  = render "layouts/notice"
+
+h1 Расписание для группы #{@group.name}
+
+.row
+  .col-md-2
+    p.well.well-sm.well-lecture
+      | Лекция
+  .col-md-2
+    p.well.well-sm.well-seminar
+      | Семинар
+  .col-md-2
+    p.well.well-sm.well-lab
+      | Лаб.
+
+table.table.table-bordered.table-condensed.timetable
+  thead
+    tr
+      th
+      - for weekday in ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+        th = weekday
+  tbody
+    - {first: "08:30 - 10:10", second: "10:20 - 12:00", third: "12:20 - 14:00", fourth: "14:10 - 15:50", fifth: "16:00 - 17:40"}.each do |pair_num, pair_time|
+      tr class="#{pair_num}"
+        td.col-md-1
+          strong = pair_time
+        - [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |weekday|
+          td class="#{weekday} col-md-1"
+            - @lessons.pair(pair_num).weekday(weekday).each do |lesson|
+              = render 'lesson', lesson: lesson
+= link_to new_group_lesson_path(@group), class: "btn btn-default" do
+  => icon "plus"
+  | Новое занятие

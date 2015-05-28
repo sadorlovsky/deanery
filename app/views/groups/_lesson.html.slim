@@ -1,0 +1,13 @@
+= div_for lesson, class: "well well-sm well-#{lesson.lesson_type}" do |lesson|
+  p
+    strong = lesson.discipline.title
+  p = lesson.teacher.full_name_abbr
+  /p = "#{ lesson.date_start.strftime('%d.%m') } - #{ lesson.date_end.strftime('%d.%m') }"
+  p.small
+    | ауд.
+    =< lesson.classroom
+  .btn-group.btn-group-xs.btn-group-justified role="group" aria-label="..."
+    = link_to edit_group_lesson_path(@group, lesson), class: "btn btn-default" do
+      = icon "edit"
+    = link_to group_lesson_path(@group, lesson), class: "btn btn-danger", method: :delete, data: { confirm: "Вы уверены что хотите удалить занятие #{ if lesson.weekday.tuesday? then 'во' else 'в' end } #{ lesson.weekday_text } ?"}, remote: true do
+      = icon "trash-o"

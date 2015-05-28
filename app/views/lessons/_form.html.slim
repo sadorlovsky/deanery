@@ -1,16 +1,33 @@
-= simple_form_for(@lesson, defaults: { input_html: { class: "form-control" }}) do |f|
+= simple_form_for([@group, @lesson], defaults: { input_html: { class: "form-control" }}) do |f|
   .row
     .col-md-4
-      .form-group
-      = f.association :group, label: "Группа"
-      .form-group
-        = f.association :discipline, label: "Предмет"
-      .form-group
-        = f.association :teacher, label_method: :full_name, label: "Преподаватель"
-      .form-group
-        = f.input :classroom, label: "Аудитория"
-  .row
+      .panel.panel-default
+        .panel-heading Занятие
+        .panel-body
+          /.form-group
+            = f.association :group, label: "Группа"
+          .form-group
+            = f.association :discipline, label: "Предмет"
+          .form-group
+            = f.association :teacher, label_method: :full_name, label: "Преподаватель"
+          .form-group
+            = f.input :lesson_type, label: "Тип занятия"
     .col-md-4
+      .panel.panel-default
+        .panel-heading Время и место
+        .panel-body
+          .form-group
+            = f.input :date_start, as: :string, class: "datepicker", label: "Дата начала"
+          .form-group
+            = f.input :date_end, as: :string, class: "datepicker", label: "Дата окончания"
+          .form-group
+            = f.input :classroom, label: "Аудитория"
+          .form-group
+            = f.input :weekday, label: "День недели"
+          .form-group
+            = f.input :pair, label: "Пара"
+  .row
+    .col-md-8
       .btn-group.btn-group-justified role="group" aria-label="..."
         .btn-group role="group"
           = link_to :back, class: "btn btn-default" do

@@ -22,6 +22,10 @@ class Teacher < ActiveRecord::Base
     @full_name = [last_name, first_name, middle_name] * ' '
   end
 
+  def full_name_abbr
+     @full_name = [last_name, first_name[0]+'.', middle_name[0]+'.'] * ' '
+  end
+
   def get_gender
     @gender = self.gender == 1 ? "Мужской" : "Женский"
   end

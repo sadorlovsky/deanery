@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   load_and_authorize_resource
   
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :timetable]
 
   # GET /groups
   # GET /groups.json
@@ -61,6 +61,10 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: 'Группа успешно удалена.' }
       format.json { head :no_content }
     end
+  end
+
+  def timetable
+    @lessons = Lesson.where group: @group
   end
 
   private

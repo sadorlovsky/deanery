@@ -1,7 +1,7 @@
 - if notice
   = render "layouts/notice"
 
-h1 Расписание
+h1 Занятия
 
 table.table.table-hover
   thead
@@ -9,6 +9,7 @@ table.table.table-hover
       th Группа
       th Предмет
       th Преподаватель
+      th Тип
       th Аудитория
 
   tbody
@@ -17,70 +18,10 @@ table.table.table-hover
         td = lesson.group.name
         td = lesson.discipline.title
         td = lesson.teacher.full_name
+        td
+          - if lesson.has_attribute? :lesson_type
+            = lesson.lesson_type
         td = lesson.classroom
-        td = link_to 'Открыть', lesson
+        td = link_to 'Открыть', group_lesson_path(@group, lesson)
 
-
-table.table.table-bordered.table-condensed
-  thead
-    tr
-      th
-      th Пн
-      th Вт
-      th Ср
-      th Чт
-      th Пт
-      th Сб
-  tbody
-    tr
-      td 08:30 - 10:10
-      td
-        | Информатика
-        br
-        | Иванов И. И.
-        br
-        | 404
-      td
-      td
-      td
-      td
-      td
-    tr
-      td 08:30 - 10:10
-      td
-      td
-      td
-      td
-        | Информатика
-        br
-        | Иванов И. И.
-        br
-        | 404
-      td
-      td
-    tr
-      td 08:30 - 10:10
-      td
-      td
-      td
-      td
-      td
-      td
-    tr
-      td 08:30 - 10:10
-      td
-      td
-      td
-      td
-      td
-      td
-    tr
-      td 08:30 - 10:10
-      td
-      td
-      td
-      td
-      td
-      td
-
-= link_to 'Новое занятие', new_lesson_path, class: "btn btn-primary"
+= link_to 'Новое занятие', new_group_lesson_path, class: "btn btn-primary"

@@ -1,0 +1,62 @@
+- if notice
+  = render "layouts/notice"
+
+.row
+  .col-md-5
+    .panel.panel-default
+      .panel-body
+        h1 = @group.name
+        ul.list-inline.lead
+          li
+            span.label.label-default
+              => @group.course
+              | курс
+          li
+            span.label.label-default
+              = @group.branch
+          li
+            span.label.label-default
+              = @group.qualification_text
+
+        .btn-group role="group" aria-label="..."
+          = link_to edit_group_path(@group), class: "btn btn-primary" do
+            => icon "edit"
+            | Редактировать
+          = link_to @group, class: "btn btn-danger", method: :delete, data: { confirm: "Вы уверены что хотите удалить #{@group.name} ?" } do
+            => icon "trash"
+            | Удалить
+  .col-md-3
+    .panel.panel-default
+      .panel-body
+        p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
+          => icon "calendar"
+          | Расписание занятий
+        p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
+          => icon "calendar"
+          | Успеваемость
+        p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
+          => icon "calendar"
+          | Должники
+
+- unless @group.students.empty?
+  h2
+    | В группе
+    =< Russian.p @group.students.count, "%n студент", "%n студента", "%n студентов"
+
+  .table-responsive
+    table.table.table-hover
+      thead
+        tr
+          th #
+          th ФИО
+      tbody
+      - @group.students.each_with_index do |student, index|
+        tr class=( student.class_monitor ? 'warning' : '')
+          td = index + 1
+          td = link_to student.full_name, student
+- else
+  h2 В группе нет студентов
+
+= link_to new_group_student_path(@group), class: "btn btn-primary" do
+  => icon "plus"
+  | Новый студент

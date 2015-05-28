@@ -1,8 +1,8 @@
 ru:
   helpers:
     submit:
-      create: "Отправить"
-      update: "Отправить"
+      create: "Сохранить"
+      update: "Сохранить"
   date:
     formats:
       default: "%d.%m.%Y"
@@ -15,4 +15,22 @@ ru:
       qualification:
         bachelor: "Бакалавриат"
         master: "Магистратура"
+    lesson:
+      weekday:
+        monday: "понедельник"
+        tuesday: "вторник"
+        wednesday: "среда"
+        thursday: "четверг"
+        friday: "пятница"
+        saturday: "суббота"
+      pair:
+        first: "первая"
+        second: "вторая"
+        third: "третья"
+        fourth: "четвертая"
+        fifth: "пятая"
+      lesson_type:
+        lecture: "лекция"
+        seminar: "семинар"
+        lab: "лаб."
 

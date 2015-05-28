@@ -14,6 +14,6 @@ p
   | Аудитория:
   strong =< @lesson.classroom
 
-=> link_to 'Edit', edit_lesson_path(@lesson)
+=> link_to 'Edit', edit_group_lesson_path(@group, @lesson)
 ||
-=< link_to 'Back', lessons_path
+=< link_to 'Back', group_lessons_path

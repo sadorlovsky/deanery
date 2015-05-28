@@ -9,11 +9,13 @@
 #= require bootstrap-datepicker
 #= require bootstrap-datepicker.ru.min
 #= require bootstrap3-typeahead
+#= require bootstrap-editable
 #= require data-confirm-modal
 #= require validator
 #= require inputmask
 #= require nprogress
 #= require nprogress-turbolinks
+#= require table-fixed-header
 #= require_tree .
 #= require turbolinks
 
@@ -26,7 +28,7 @@ dataConfirmModal.setDefaults
   cancel: 'Отмена'
 
 $ ->
-  $('[data-toggle="tooltip"]').tooltip
+  $('[data-toggle="tooltip"]').tooltip()
 
   $('[type="checkbox"]').bootstrapSwitch
     onText: "Да"
@@ -38,3 +40,9 @@ $ ->
 
   $('.datepicker').datepicker
     language: "ru"
+
+  $('table.timetable td').hover(
+    -> $(this).find('.add-lesson').show()
+    -> $(this).find('.add-lesson').hide()
+    )
+

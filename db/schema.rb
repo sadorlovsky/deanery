@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524144345) do
+ActiveRecord::Schema.define(version: 20150526063748) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string   "title"
@@ -35,11 +35,12 @@ ActiveRecord::Schema.define(version: 20150524144345) do
     t.integer  "teacher_id"
     t.date     "date_start"
     t.date     "date_end"
-    t.time     "time_start"
-    t.time     "time_end"
     t.string   "classroom"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "weekday"
+    t.string   "pair"
+    t.string   "lesson_type"
   end
 
   add_index "lessons", ["group_id"], name: "index_lessons_on_group_id"
