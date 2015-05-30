@@ -1,0 +1,24 @@
+- if notice
+  = render "layouts/notice"
+
+h1 Предметы
+
+.row
+  - @disciplines.each do |discipline|
+    .col-md-3
+      .panel.panel-default
+        .panel-body.text-center
+          h3 = discipline.title
+          .btn.btn-group.btn-group-justified
+            .btn-group
+              = link_to edit_discipline_path(discipline), class: "btn btn-default" do
+                  => icon "edit"
+            .btn-group
+              = link_to discipline, method: :delete, class: "btn btn-danger", data: { confirm: "Вы уверены что хотите удалить #{discipline.title} ?"} do
+                  => icon "trash"
+
+
+
+= link_to new_discipline_path, class: "class: btn btn-primary" do
+  => icon "plus"
+  | Новый предмет

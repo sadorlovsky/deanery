@@ -30,7 +30,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to timetable_group_path(@group), notice: 'lesson was successfully created.' }
+        format.html { redirect_to timetable_group_path(@group), notice: 'Занятие успешно создано.' }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to timetable_group_path(@group), notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to timetable_group_path(@group), notice: 'Занятие успешно изменено.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to lessons_url, notice: 'Занятие успешно удалено.' }
       format.json { head :no_content }
       format.js
     end

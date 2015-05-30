@@ -30,7 +30,7 @@ class DisciplinesController < ApplicationController
 
     respond_to do |format|
       if @discipline.save
-        format.html { redirect_to @discipline, notice: 'Предмет успешно добавлен.' }
+        format.html { redirect_to disciplines_path, notice: 'Предмет успешно добавлен.' }
         format.json { render :show, status: :created, location: @discipline }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class DisciplinesController < ApplicationController
   def update
     respond_to do |format|
       if @discipline.update(discipline_params)
-        format.html { redirect_to @discipline, notice: 'Предмет успешно изменен.' }
+        format.html { redirect_to disciplines_path, notice: 'Предмет успешно изменен.' }
         format.json { render :show, status: :ok, location: @discipline }
       else
         format.html { render :edit }

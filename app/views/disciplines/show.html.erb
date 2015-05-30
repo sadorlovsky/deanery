@@ -4,10 +4,6 @@
 
 <h1><%= @discipline.title %></h1>
 
-<p class="lead">
-  <%= @discipline.description %>
-</p>
-
 <div class="btn-group role="group" aria-label="...">
   <%= link_to edit_discipline_path(@discipline), class: "btn btn-primary" do %>
     <%= icon "edit" %> Редактировать
