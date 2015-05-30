@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   get 'students', to: 'students#all'
   get 'students/all', to: 'students#all'
+  get 'students/:id/progress', to: 'students#progress'
 
   resources :students, only: [:destroy, :show, :edit, :update]
 
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     resources :students, only: [:create, :index, :new]
     resources :lessons
     get 'timetable', on: :member
+    get 'progress', on: :member
   end
 
   authenticated :user do

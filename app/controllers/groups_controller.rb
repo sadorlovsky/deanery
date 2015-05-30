@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   load_and_authorize_resource
   
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :timetable]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :timetable, :progress]
 
   # GET /groups
   # GET /groups.json
@@ -65,6 +65,11 @@ class GroupsController < ApplicationController
 
   def timetable
     @lessons = Lesson.where group: @group
+  end
+
+  def progress
+    @students = @group.students
+    @disciplines = @group.disciplines
   end
 
   private

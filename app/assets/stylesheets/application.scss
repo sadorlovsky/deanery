@@ -100,3 +100,12 @@ li.sign_out > a:hover {
   background-color: $label-info-bg;
   color: $label-color;
 }
+
+.progress-table td:hover {
+  background-color: $label-success-bg; 
+  color: $label-color;
+}
+
+.editable-mark {
+  display: block;
+}

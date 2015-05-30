@@ -31,12 +31,9 @@
         p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
           => icon "calendar"
           | Расписание занятий
-        p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
-          => icon "calendar"
+        p = link_to progress_group_path(@group), class: "btn btn-default btn-block" do
+          => icon "star"
           | Успеваемость
-        p = link_to timetable_group_path(@group), class: "btn btn-default btn-block" do
-          => icon "calendar"
-          | Должники
 
 - unless @group.students.empty?
   h2

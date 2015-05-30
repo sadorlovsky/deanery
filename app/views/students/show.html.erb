@@ -54,9 +54,10 @@
 
         <div role="tabpanel">
 
-          <ul class="nav nav-tabs nav-justified" role="tablist">
+          <ul class="nav nav-tabs nav-justified" id="student-nav-tab" role="tablist">
             <li role="presentation" class="active"><a href="#passport" aria-controls="passport" role="tab" data-toggle="tab">Паспортные данные</a></li>
             <li role="presentation"><a href="#contacts" aria-controls="contacts" role="tab" data-toggle="tab">Контакты</a></li>
+            <li role="presentation"><a href="#progress" aria-controls="progress" role="tab" data-toggle="tab">Успеваемость</a></li>
           </ul>
 
           <div class="tab-content">
@@ -83,6 +84,55 @@
                   <li>E-mail: <strong><%= @student.email %></strong></li>
                 </ul>
               </p>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="progress">
+              <table class="table table-condensed table-hover">
+                <thead>
+                  <tr>
+                    <th>Предмет</th>
+                    <th class="col-md-1">М1</th>
+                    <th class="col-md-1">М2</th>
+                    <th class="col-md-1">ЗАЧ</th>
+                    <th class="col-md-1">ЭКЗ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @student.group.disciplines.uniq.each do |discipline| %>
+                    <% mark = Mark.where(student: @student, discipline: discipline).take %>
+                    <tr>
+                      <td><%= discipline.title %></td>
+                      <td class="col-md-1">
+                        <% if mark.try(:m1).nil? %>
+                          <%= icon "minus" %>
+                        <% else %>
+                          <%= mark.m1 %>
+                        <% end %>
+                      </td>
+                      <td class="col-md-1">
+                        <% if mark.try(:m2).nil? %>
+                          <%= icon "minus" %>
+                        <% else %>
+                          <%= mark.m2 %>
+                        <% end %>
+                      </td>
+                      <td class="col-md-1">
+                        <% if mark.try(:test).nil? %>
+                          <%= icon "minus" %>
+                        <% else %>
+                          <%= mark.test %>
+                        <% end %>
+                      </td>
+                      <td class="col-md-1">
+                        <% if mark.try(:exam).nil? %>
+                          <%= icon "minus" %>
+                        <% else %>
+                          <%= mark.exam %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
 

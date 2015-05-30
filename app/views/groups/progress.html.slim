@@ -1,0 +1,46 @@
+- if notice
+  = render "layouts/notice"
+
+h1 Успеваемость студентов группы #{@group.name}
+
+- @students.each do |student|
+  .panel.panel-default
+    .panel-heading
+      h3
+        => image_tag student.photo.url(:mini), class: "img img-circle"
+        = link_to student.full_name, student
+    table.table.table-bordered.table-condensed.progress-table
+      thead
+        tr
+          - @disciplines.each do |discipline|
+            th.text-center colspan="4" = discipline.title
+        tr
+          - @disciplines.each do |discipline|
+            th.text-center М1
+            th.text-center М2
+            th.text-center ЗАЧ
+            th.text-center ЭКЗ
+      tbody
+        tr
+          - @disciplines.each do |discipline|
+            - mark = Mark.where(student: student, discipline: discipline).take
+            td.text-center
+              - if mark.try(:m1).nil?
+                | -
+              - else
+                = mark.m1
+            td.text-center
+              - if mark.try(:m2).nil?
+                | -
+              - else
+                = mark.m2
+            td.text-center
+              - if mark.try(:test).nil?
+                | -
+              - else
+                = mark.test
+            td.text-center
+              - if mark.try(:exam).nil?
+                | -
+              - else
+                = mark.exam

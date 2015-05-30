@@ -1,0 +1,12 @@
+- if notice
+  = render "layouts/notice"
+
+h1 Оценки
+
+- @marks.each do |mark|
+  p
+    = link_to 'Show', mark
+    = link_to 'Edit', edit_mark_path(mark)
+    = link_to 'Destroy', mark, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'Новая оценка', new_mark_path

@@ -4,6 +4,7 @@ class Student < ActiveRecord::Base
   enumerize :sex, in: [:male, :female]
 
   belongs_to :group
+  has_many :marks
 
   normalize :first_name, :last_name, :middle_name do |value|
     value = value.squish
@@ -26,7 +27,7 @@ class Student < ActiveRecord::Base
 
   validates :sex, presence: true, inclusion: { in: Student.sex.values }
 
-  has_attached_file :photo, styles: { thumb: "100x100#", small: "150x150>", medium: "300x200" },
+  has_attached_file :photo, styles: { mini: "50x50#", thumb: "100x100#", small: "150x150>", medium: "300x200" },
     default_url: "missing_photo/:style/default.png"
 
   validates_attachment :photo, content_type: { content_type: ["image/jpeg", "image/png"] }

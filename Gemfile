@@ -10,6 +10,8 @@ gem 'bootstrap-sass'
 
 gem 'bootswatch-rails'
 
+gem 'bootstrap-editable-rails'
+
 gem 'nprogress-rails'
 
 gem 'font-awesome-sass'

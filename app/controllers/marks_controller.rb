@@ -57,6 +57,6 @@ class MarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mark_params
-      params[:mark]
+      params.require(:mark).permit!
     end
 end

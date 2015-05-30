@@ -10,6 +10,7 @@
 #= require bootstrap-datepicker.ru.min
 #= require bootstrap3-typeahead
 #= require bootstrap-editable
+#= require bootstrap-editable-rails
 #= require data-confirm-modal
 #= require validator
 #= require inputmask
@@ -41,8 +42,7 @@ $ ->
   $('.datepicker').datepicker
     language: "ru"
 
-  $('table.timetable td').hover(
-    -> $(this).find('.add-lesson').show()
-    -> $(this).find('.add-lesson').hide()
-    )
-
+  $('.editable-mark').editable
+    mode: "inline"
+    showbuttons: false
+    inputclass: "her_input"
