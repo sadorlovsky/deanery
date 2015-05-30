@@ -14,13 +14,3 @@ ul.nav.nav-sidebar
   = active_link_to disciplines_path, wrap_tag: :li do
     => icon "list", class: "fa-fw"
     | Предметы
-
-  
-ul.nav.nav-sidebar
-  /= active_link_to lessons_path, wrap_tag: :li do 
-    => icon "calendar", class: "fa-fw"
-    | Занятия
-    
-  = active_link_to "/progress", wrap_tag: :li do 
-    => icon "star", class: "fa-fw"
-    | Оценки
