@@ -66,7 +66,7 @@
               .form-group
                 = f.label :passport_when, "Когда выдан", required: false, class: "col-sm-4 control-label"
                 .col-sm-8
-                  = f.input_field :passport_when, as: :string, value: @student.passport_when.strftime("%d.%m.%Y"), required: true, class: "datepicker form-control", placeholder: "Когда выдан"
+                  = f.input_field :passport_when, as: :string, required: true, class: "datepicker form-control", placeholder: "Когда выдан"
                   span.help-block.with-errors Обязательное поле
 
     .col-md-6
@@ -110,7 +110,7 @@
               .form-group
                 = f.label :birth_date, "Дата рождения", required: false, class: "col-sm-4 control-label"
                 .col-sm-8
-                  = f.input_field :birth_date, as: :string, value: @student.birth_date.strftime("%d.%m.%Y"), required: true, placeholder: "Дата рождения", class: "form-control datepicker"
+                  = f.input_field :birth_date, as: :string, required: true, placeholder: "Дата рождения", class: "form-control datepicker"
                   span.help-block.with-errors Обязательное поле
           
           .row
