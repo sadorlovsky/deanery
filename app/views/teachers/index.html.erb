@@ -7,6 +7,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Фото</th>
       <th>ФИО</th>
       <th>Кафедра</th>
     </tr>
@@ -14,6 +15,7 @@
   <tbody>
     <% @teachers.each do |teacher| %>
     <tr>
+      <td><%= image_tag teacher.photo.url(:mini) %></td>
       <td class="uk-width-1-5"><%= link_to teacher.full_name, teacher %></td>
       <td class="uk-width-1-5"><%= teacher.cathedra %></td>
     </tr>

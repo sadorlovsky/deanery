@@ -1,4 +1,19 @@
 GIT
+  remote: git://github.com/constXife/jazz_hands.git
+  revision: 92e959f4e8a4a8c794f96d00caf06698c904fe1f
+  specs:
+    jazz_hands (0.5.2)
+      awesome_print (~> 1.2)
+      coolline (>= 0.4.2)
+      hirb (~> 0.7.1)
+      pry (~> 0.9.12)
+      pry-doc (~> 0.4.6)
+      pry-git (~> 0.2.3)
+      pry-rails (~> 0.3.2)
+      pry-remote (>= 0.1.7)
+      railties (>= 3.0, < 5.0)
+
+GIT
   remote: git://github.com/ifad/data-confirm-modal.git
   revision: ba73f2fccd4451ee2f41f2f6995bff8f7ede3459
   specs:
@@ -58,6 +73,7 @@ GEM
     autoprefixer-rails (5.1.11)
       execjs
       json
+    awesome_print (1.6.1)
     aws-sdk (1.64.0)
       aws-sdk-v1 (= 1.64.0)
     aws-sdk-v1 (1.64.0)
@@ -94,6 +110,8 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    coolline (0.5.0)
+      unicode_utils (~> 1.4)
     date_validator (0.7.1)
       activemodel
     debug_inspector (0.0.2)
@@ -106,17 +124,27 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (0.12.0)
     diff-lcs (1.2.5)
+    diffy (3.0.7)
     enumerize (0.11.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.5.2)
     fabrication (2.13.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    grit (2.0.0)
+      diff-lcs (>= 1.1.2)
+      mime-types (>= 1.15)
+    hirb (0.7.3)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -137,6 +165,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
@@ -153,6 +182,24 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.18.1)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-doc (0.4.6)
+      pry (>= 0.9)
+      yard (>= 0.8)
+    pry-git (0.2.3)
+      diffy
+      grit
+      pry (>= 0.9.8)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -224,6 +271,7 @@ GEM
     slim (3.0.3)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
+    slop (3.6.0)
     spring (1.3.5)
     sprockets (3.0.3)
       rack (~> 1.0)
@@ -244,6 +292,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode (0.4.4.2)
+    unicode_utils (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.1.2)
@@ -251,6 +300,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -272,8 +322,10 @@ DEPENDENCIES
   devise-i18n
   enumerize
   fabrication
+  factory_girl_rails
   faker
   font-awesome-sass
+  jazz_hands!
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
@@ -282,6 +334,7 @@ DEPENDENCIES
   nprogress-rails
   paperclip (~> 4.2)
   pg
+  puma
   rails (= 4.2.1)
   rails-i18n (~> 4.0.0)
   rails_12factor

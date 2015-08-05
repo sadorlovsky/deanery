@@ -1,22 +1,22 @@
 - if notice
   = render "layouts/notice"
 
-h1 Предметы
+- unless @disciplines.empty?
+  h1 Предметы
 
-.row
-  - @disciplines.each do |discipline|
-    .col-md-3
-      .panel.panel-default
-        .panel-body.text-center
-          h3 = discipline.title
-          .btn.btn-group.btn-group-justified
-            .btn-group
+  .row
+    - @disciplines.each do |discipline|
+      = div_for discipline, class: "col-md-3" do
+        .panel.panel-default
+          .panel-body.text-center
+            h3 = discipline.title
+            .btn-group.btn-group-sm.actions
               = link_to edit_discipline_path(discipline), class: "btn btn-default" do
-                  => icon "edit"
-            .btn-group
+                    => icon "edit"
               = link_to discipline, method: :delete, class: "btn btn-danger", data: { confirm: "Вы уверены что хотите удалить #{discipline.title} ?"} do
-                  => icon "trash"
-
+                    => icon "trash"
+- else
+  h1 Предметов еще нет
 
 
 = link_to new_discipline_path, class: "class: btn btn-primary" do

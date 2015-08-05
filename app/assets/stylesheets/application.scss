@@ -2,6 +2,7 @@
 @import "bootstrap-switch";
 @import "bootstrap-datepicker";
 @import "bootstrap-editable";
+@import "bootstrap-select";
 
 @import "bootstrap-sprockets";
 @import "bootswatch/flatly/variables";
@@ -108,4 +109,9 @@ li.sign_out > a:hover {
 
 .editable-mark {
   display: block;
+}
+
+.actions {
+  visibility: hidden;
+  transition: opacity 0.5s linear;
 }

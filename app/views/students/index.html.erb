@@ -8,16 +8,20 @@
   <thead>
     <tr>
       <th>Код</th>
+      <th>Фото</th>
       <th>ФИО</th>
       <th>Дата рождения</th>
       <th>Группа</th>
       <th>Курс</th>
+      <th>Квалификация</th>
+      <th>Рейтинг</th>
     </tr>
   </thead>
   <tbody>
     <% @students.each_with_index do |student, index| %>
     <tr>
       <td><%= student.code %></td>
+      <td><%= image_tag student.photo.url(:mini) %></td>
       <td><%= link_to student.full_name, student %></td>
       <td>
         <%= "#{ Russian::strftime(student.birth_date, '%d.%m.%Y') } (#{ Russian.p(student.age, '%n год', '%n года', '%n лет') })" %>
@@ -26,6 +30,8 @@
         <%= link_to student.group.name, group_students_path(student.group) %>
       </td>
       <td><%= student.group.course %></td>
+      <td><%= student.group.qualification_text %></td>
+      <td>35</td>
     </tr>
     <% end %>
   </tbody>

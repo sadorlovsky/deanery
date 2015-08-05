@@ -11,6 +11,7 @@
 #= require bootstrap3-typeahead
 #= require bootstrap-editable
 #= require bootstrap-editable-rails
+#= require bootstrap-select
 #= require data-confirm-modal
 #= require validator
 #= require inputmask
@@ -46,3 +47,13 @@ $ ->
     mode: "inline"
     showbuttons: false
     inputclass: "her_input"
+
+  $('.discipline').hover(
+    -> $(this).find(".actions").css("visibility", "visible"),
+    -> $(this).find(".actions").css("visibility", "hidden")
+  )
+
+  $('ul.nav a[href^="/settings"]').hover(
+    -> $(this).find('i').addClass('fa-spin'),
+    -> $(this).find('i').removeClass('fa-spin')
+  )
